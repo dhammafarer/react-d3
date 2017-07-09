@@ -1,13 +1,14 @@
+import * as d3 from 'd3';
+
 export function formatSolarIrradiance (array, date) {
   return filterByDate(array, date)
-
-  .then(csv => filterByDate(date, csv))
-  .then(csv => csv.map(row => {
-    return {
-      date: formatDateField(row),
-      value: row["ETR (Wh/m^2)"]
-    }
-  }));
+    .map(row => {
+      return {
+        date: formatDateField(row),
+        zenith: row["Zenith (deg)"],
+        value: row["ETR (Wh/m^2)"]
+      };
+    });
 }
 
 function formatTime (string) {

@@ -13,6 +13,6 @@ describe('formatSolarIrradiance', () => {
       {"date": "2010-01-05 11:00", "zenith": "99.0", "value": "100"}
     ];
 
-    expect(formatSolarIrradiance(data)).toEqual(output);
+    expect(formatSolarIrradiance(data, "2010-01-05")).toEqual(output);
   });
 });
