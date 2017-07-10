@@ -12,7 +12,9 @@ class Axis extends React.Component {
 
   renderAxis () {
     let node = this.axis;
-    let axis = d3[this.props.axis](this.props.scale).ticks(3);
+    let axis = d3[this.props.axis](this.props.scale)
+      .ticks(this.props.ticks)
+      .tickFormat(this.props.format);
     d3.select(node).call(axis);
   }
 

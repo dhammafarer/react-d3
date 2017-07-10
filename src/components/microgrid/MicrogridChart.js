@@ -19,7 +19,8 @@ const x = props => { return d3.scaleTime()
 };
 
 const y = props => { return d3.scaleLinear()
-  .domain([0, d3.max(props.data, d => d.value) + 100])
+  //.domain([0, d3.max(props.data, d => d.value) + 100])
+  .domain([0, 1500])
   .range([props.height, 0]);
 };
 
