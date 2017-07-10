@@ -10,6 +10,17 @@ const styles = {
 };
 
 class LineChart extends React.Component {
+  componentDidUpdate () {
+    let pathLength = this.path.getTotalLength();
+    d3.select(this.path)
+      .attr('stroke-dasharray', pathLength + " " + pathLength)
+      .attr('stroke-dashoffset', pathLength)
+      .transition()
+      .duration(4000)
+      .ease(d3.easeLinear)
+      .attr('stroke-dashoffset', 0);
+  }
+
   render () {
     const line = d3.line()
       .x(d => this.props.x(d.date))
@@ -17,7 +28,7 @@ class LineChart extends React.Component {
       .curve(d3.curveMonotoneX);
 
     return (
-      <path {...styles} d={line(this.props.data)}/>
+      <path ref={path => this.path = path} {...styles} d={line(this.props.data)}/>
     )
   }
 };
