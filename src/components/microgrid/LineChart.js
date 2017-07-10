@@ -1,24 +1,29 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import * as d3 from 'd3';
+import { TimelineMax } from 'gsap';
 
 const styles = {
   fill: 'none',
   stroke: 'steelblue',
-  strokeWidth: '3px',
+  strokeWidth: '4px',
   strokeLinecap: 'round'
 };
 
 class LineChart extends React.Component {
   componentDidUpdate () {
     let pathLength = this.path.getTotalLength();
-    d3.select(this.path)
-      .attr('stroke-dasharray', pathLength + " " + pathLength)
-      .attr('stroke-dashoffset', pathLength)
-      .transition()
-      .duration(4000)
-      .ease(d3.easeLinear)
-      .attr('stroke-dashoffset', 0);
+    new TimelineMax()
+      .set(this.path, {'stroke-dasharray': pathLength + " " + pathLength })
+      .fromTo(this.path, 4, {'stroke-dashoffset': pathLength}, {'stroke-dashoffset': 0, ease: 'Power0.easeNone'});
+
+    //    d3.select(this.path)
+    //      .attr('stroke-dasharray', pathLength + " " + pathLength)
+    //      .attr('stroke-dashoffset', pathLength)
+    //      .transition()
+    //      .duration(4000)
+    //      .ease(d3.easeLinear)
+    //      .attr('stroke-dashoffset', 0);
   }
 
   render () {

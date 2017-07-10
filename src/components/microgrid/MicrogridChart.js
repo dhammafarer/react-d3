@@ -37,8 +37,8 @@ function MicrogridChart (props) {
   return (
     <svg {...svgSize(props)}>
       <g transform={transform(props)}>
-        <LineChart data={props.data} {...scales}/>
         <XYaxis width={props.width} height={props.height} {...scales}/>
+        <LineChart data={props.data} {...scales}/>
       </g>
     </svg>
   )
