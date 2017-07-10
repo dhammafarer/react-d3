@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import * as d3 from 'd3';
 
 MicrogridChart.propTypes = {
   data: PropTypes.array.isRequired,
@@ -15,10 +16,15 @@ function MicrogridChart (props) {
 
   let transform = `translate(${props.margin.top}, ${props.margin.bottom})`;
 
+  const x = props => {
+    d3.scaleTime()
+      .domain(d3.extent(props.data, d => d.date))
+      .range([0, props.width])
+  };
+
   return (
     <svg {...svgSize}>
       <g transform={transform}>
-        <circle cx="10" cy="10" r="2"/>
       </g>
     </svg>
   )

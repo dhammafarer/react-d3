@@ -16,8 +16,8 @@ function formatTime (string) {
 }
 
 function parseTime (string) {
-  const timeParser = d3.timeParse('%Y-%m-%d %H:%M')
-  return timeParser(string)
+  const timeParser = d3.timeParse('%Y-%m-%d %H:%M');
+  return timeParser(string);
 }
 
 function combineDate (date, time) {
@@ -25,8 +25,8 @@ function combineDate (date, time) {
 }
 
 function formatDateField (row) {
-  //return parseTime(combineDate(row["YYYY-MM-DD"], formatTime(row['HH:MM (LST)'])));
-  return combineDate(row["YYYY-MM-DD"], formatTime(row['HH:MM (LST)']));
+  return parseTime(combineDate(row["YYYY-MM-DD"], formatTime(row['HH:MM (LST)'])));
+  //return combineDate(row["YYYY-MM-DD"], formatTime(row['HH:MM (LST)']));
 }
 
 function filterByDate (array, date) {

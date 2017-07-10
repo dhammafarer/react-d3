@@ -19,6 +19,7 @@ class MicrogridApp extends React.Component {
 
   componentDidMount () {
     getSolarIrradiance('2010-06-01')
+      .then(console.log)
       .then(csv => this.setState({data: csv}));
   }
 
