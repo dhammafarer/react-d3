@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import * as d3 from 'd3';
 import LineChart from './LineChart.js';
 import XYaxis from './XYaxis.js';
+import ChartAnimationOverlay from './ChartAnimationOverlay.js';
 
 const svgSize = props => {
   return {
@@ -37,8 +38,9 @@ function MicrogridChart (props) {
   return (
     <svg {...svgSize(props)}>
       <g transform={transform(props)}>
-        <XYaxis width={props.width} height={props.height} {...scales}/>
         <LineChart timeline={props.timeline} data={props.data} {...scales}/>
+        <ChartAnimationOverlay timeline={props.timeline} height={props.height} width={props.width}/>
+        <XYaxis width={props.width} height={props.height} {...scales}/>
       </g>
     </svg>
   )

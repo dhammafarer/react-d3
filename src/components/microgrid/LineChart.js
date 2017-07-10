@@ -12,12 +12,12 @@ const styles = {
 
 class LineChart extends React.Component {
   componentDidUpdate (prevProps) {
-    if (prevProps.data != this.props.data) {
-      let pathLength = this.path.getTotalLength();
-      this.props.timeline
-        .set(this.path, {'stroke-dasharray': pathLength + " " + pathLength, 'stroke-dashoffset': pathLength})
-        .to(this.path, 4, {'stroke-dashoffset': 0, ease: 'Power0.easeNone'});
-    }
+    //    if (prevProps.data != this.props.data) {
+    //      let pathLength = this.path.getTotalLength();
+    //      this.props.timeline
+    //        .set(this.path, {'stroke-dasharray': pathLength + " " + pathLength, 'stroke-dashoffset': pathLength}, 0)
+    //        .to(this.path, 4, {'stroke-dashoffset': 0, ease: 'Power0.easeNone'}, 0);
+    //    }
   }
 
   render () {
