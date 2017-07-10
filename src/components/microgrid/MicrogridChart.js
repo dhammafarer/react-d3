@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import * as d3 from 'd3';
 import LineChart from './LineChart.js';
+import XYaxis from './XYaxis.js';
 
 const svgSize = props => {
   return {
@@ -10,16 +11,17 @@ const svgSize = props => {
   }
 };
 
-const transform = props => `translate(${props.margin.top}, ${props.margin.bottom})`;
+const transform = props => `translate(${props.margin.left}, ${props.margin.bottom})`;
 
 const x = props => { return d3.scaleTime()
-    .domain(d3.extent(props.data, d => d.date))
-    .range([0, props.width]);
+  .domain(d3.extent(props.data, d => d.date))
+  .range([0, props.width]);
 };
 
-const y = props => { return d3.scaleLinear() .domain([0,
-  d3.max(props.data, d => d.value)]) .range([props.height,
-    0]); };
+const y = props => { return d3.scaleLinear()
+  .domain([0, d3.max(props.data, d => d.value) + 100])
+  .range([props.height, 0]);
+};
 
 MicrogridChart.propTypes = {
   data: PropTypes.array.isRequired,
@@ -35,6 +37,7 @@ function MicrogridChart (props) {
     <svg {...svgSize(props)}>
       <g transform={transform(props)}>
         <LineChart data={props.data} {...scales}/>
+        <XYaxis width={props.width} height={props.height} {...scales}/>
       </g>
     </svg>
   )
