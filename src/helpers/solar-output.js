@@ -5,8 +5,8 @@ export function formatSolarIrradiance (array, date) {
     .map(row => {
       return {
         date: formatDateField(row),
-        zenith: row["Zenith (deg)"],
-        value: row["ETR (Wh/m^2)"]
+        zenith: +row["Zenith (deg)"],
+        value: +row["ETR (Wh/m^2)"]
       };
     });
 }

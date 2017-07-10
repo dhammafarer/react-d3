@@ -12,8 +12,8 @@ describe('formatSolarIrradiance', () => {
     ];
 
     let output = [
-      {"date": timeParse("2010-01-05 01:00"), "zenith": "99.0", "value": "0"},
-      {"date": timeParse("2010-01-05 11:00"), "zenith": "99.0", "value": "100"}
+      {"date": timeParse("2010-01-05 01:00"), "zenith": 99.0, "value": 0},
+      {"date": timeParse("2010-01-05 11:00"), "zenith": 99.0, "value": 100}
     ];
 
     expect(formatSolarIrradiance(data, "2010-01-05")).toEqual(output);
