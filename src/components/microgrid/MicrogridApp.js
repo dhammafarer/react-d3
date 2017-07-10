@@ -12,7 +12,8 @@ class MicrogridApp extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      data: []
+      data: [],
+      playback: false
     }
   }
 
@@ -24,6 +25,9 @@ class MicrogridApp extends React.Component {
   render () {
     return (
       <div id="microgrid-app">
+        <div>
+          <button onClick={() => this.setState({playback: !this.state.playback})}>Playback</button>
+        </div>
         <MicrogridChart {...this.state} {...size} margin={margin}/>
       </div>
     )

@@ -11,11 +11,20 @@ const styles = {
 };
 
 class LineChart extends React.Component {
-  componentDidUpdate () {
-    let pathLength = this.path.getTotalLength();
-    new TimelineMax()
-      .set(this.path, {'stroke-dasharray': pathLength + " " + pathLength })
-      .fromTo(this.path, 4, {'stroke-dashoffset': pathLength}, {'stroke-dashoffset': 0, ease: 'Power0.easeNone'});
+  componentDidMount () {
+    this.tl = new TimelineMax();
+  }
+
+  componentDidUpdate (prevProps) {
+    if (prevProps.data != this.props.data) {
+      let pathLength = this.path.getTotalLength();
+      this.tl
+        .set(this.path, {'stroke-dasharray': pathLength + " " + pathLength, 'stroke-dashoffset': pathLength})
+        .to(this.path, 4, {'stroke-dashoffset': 0, ease: 'Power0.easeNone'});
+    }
+
+    if (this.props.playback == false) this.tl.pause();
+    if (this.props.playback == true) this.tl.resume();
 
     //    d3.select(this.path)
     //      .attr('stroke-dasharray', pathLength + " " + pathLength)
