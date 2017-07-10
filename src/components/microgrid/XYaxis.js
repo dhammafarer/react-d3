@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Axis from './Axis.js';
-import * as d3 from 'd3';
+import {range, timeFormat} from 'd3';
 
 XYAxis.propTypes = {
   height: PropTypes.number.isRequired,
@@ -14,9 +14,9 @@ function XYAxis (props) {
     transform: `translate(0, ${props.height})`,
     axis: 'axisBottom',
     scale: props.x,
-    ticks: null,
-    values: d3.range([0, 24]),
-    format: d => d3.timeFormat('%H:%M')(d)
+    ticks: 3,
+    values: range([0, 24]),
+    format: d => timeFormat('%H:%M')(d)
   };
 
   const ySettings = {
