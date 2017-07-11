@@ -6,7 +6,7 @@ import { TimelineMax } from 'gsap';
 const styles = {
   fill: 'none',
   stroke: 'steelblue',
-  strokeWidth: '4px',
+  strokeWidth: '2px',
   strokeLinecap: 'round'
 };
 

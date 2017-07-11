@@ -4,7 +4,8 @@ class ChartAnimationOverlay extends React.Component {
   componentDidUpdate () {
     this.props.timeline
       .set(this.rect, {opacity: 1}, 0)
-      .to(this.rect, 4, {width: 0, ease: 'Power0.easeNone'}, 0);
+      .to(this.rect, 4, {width: 0, ease: 'Power0.easeNone'}, 0)
+      .to(this.line, 4, {x: this.props.width, ease: 'Power0.easeNone'}, 0);
   }
 
   render () {
@@ -16,12 +17,15 @@ class ChartAnimationOverlay extends React.Component {
       height: this.props.height,
       fill: "white",
       stroke: "white",
-      strokeWidth: "4px",
+      strokeWidth: "1px",
       style: {opacity: 0}
     };
 
     return (
-      <rect ref={rect => this.rect = rect} {...rectProps}/>
+      <g>
+        <rect ref={rect => this.rect = rect} {...rectProps}/>
+        <rect ref={line => this.line = line} x="0" width="0.5" height={this.props.height} fill="gray"/>
+      </g>
     )
   }
 }

@@ -3,6 +3,7 @@ import { getSolarIrradiance } from '../../api/solar.js';
 import { TimelineMax } from 'gsap';
 import MicrogridChart from './MicrogridChart.js';
 import MicrogridGraphic from './MicrogridGraphic.js';
+import ChartControls from './ChartControls.js';
 
 const margin = {top: 30, bottom: 30, left: 60, right: 30};
 const size = {
@@ -37,17 +38,9 @@ class MicrogridApp extends React.Component {
   }
 
   render () {
-    let tl = this.state.timeline;
     return (
       <div id="microgrid-app">
-        <div>
-          <button onClick={() => tl.play()}>Play</button>
-          <button onClick={() => tl.pause()}>Pause</button>
-          <button onClick={() => tl.restart()}>Restart</button>
-        </div>
-        <div>
-          <input type="range" value={this.state.progress} onChange={this.handleRangeChange}/>
-        </div>
+        <ChartControls tl={this.state.timeline} progress={this.state.progress} handleRangeChange={this.handleRangeChange}/>
         <MicrogridChart {...this.state} {...size} margin={margin}/>
         <MicrogridGraphic {...this.state}/>
       </div>
