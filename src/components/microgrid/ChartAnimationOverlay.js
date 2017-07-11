@@ -33,8 +33,8 @@ class ChartAnimationOverlay extends React.Component {
 
 ChartAnimationOverlay.propTypes = {
   timeline: PropTypes.object.isRequired,
-  width: PropTypes.object.isRequired,
-  height: PropTypes.object.isRequired
+  width: PropTypes.number.isRequired,
+  height: PropTypes.number.isRequired
 };
 
 export default ChartAnimationOverlay;

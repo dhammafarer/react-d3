@@ -31,9 +31,9 @@ class Axis extends React.Component {
 Axis.propTypes = {
   axis: PropTypes.string.isRequired,
   scale: PropTypes.func.isRequired,
-  ticks: PropTypes.number.isRequired,
-  format: PropTypes.func.isRequired,
-  transform: PropTypes.func.isRequired
+  transform: PropTypes.string.isRequired,
+  format: PropTypes.func,
+  ticks: PropTypes.number,
 };
 
 export default Axis;

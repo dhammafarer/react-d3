@@ -37,13 +37,15 @@ function MicrogridChart (props) {
   const scales = {x: x(props), y: y(props)};
 
   return (
-    <svg {...svgSize(props)}>
-      <g transform={transform(props)}>
-        <LineChart timeline={props.timeline} data={props.data} {...scales}/>
-        <ChartAnimationOverlay timeline={props.timeline} height={props.height} width={props.width}/>
-        <XYaxis width={props.width} height={props.height} {...scales}/>
-      </g>
-    </svg>
+    <div className="card">
+      <svg {...svgSize(props)}>
+        <g transform={transform(props)}>
+          <LineChart timeline={props.timeline} data={props.data} {...scales}/>
+          <ChartAnimationOverlay timeline={props.timeline} height={props.height} width={props.width}/>
+          <XYaxis width={props.width} height={props.height} {...scales}/>
+        </g>
+      </svg>
+    </div>
   );
 }
 
