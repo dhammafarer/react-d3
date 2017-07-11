@@ -2,7 +2,7 @@ module.exports = {
     "env": {
         "browser": true,
         "commonjs": true,
-        "es7": true
+        "es6": true
     },
   "extends": ["eslint:recommended", 'plugin:react/recommended' ],
     "parserOptions": {

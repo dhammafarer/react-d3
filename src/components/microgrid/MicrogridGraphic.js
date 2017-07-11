@@ -1,5 +1,5 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
+import PropTypes from 'prop-types';
 
 class MicrogridGraphic extends React.Component {
   componentDidMount () {
@@ -18,8 +18,12 @@ class MicrogridGraphic extends React.Component {
           <rect ref={rect => this.rect = rect} fill="#333" x="10" y="10" width="600" height="400"/>
         </svg>
       </div>
-    )
+    );
   }
 }
+
+MicrogridGraphic.propTypes = {
+  timeline: PropTypes.object.isRequired
+};
 
 export default MicrogridGraphic;

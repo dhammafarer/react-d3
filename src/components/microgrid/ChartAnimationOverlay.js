@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class ChartAnimationOverlay extends React.Component {
   componentDidUpdate () {
@@ -26,8 +27,14 @@ class ChartAnimationOverlay extends React.Component {
         <rect ref={rect => this.rect = rect} {...rectProps}/>
         <rect ref={line => this.line = line} x="0" width="0.5" height={this.props.height} fill="gray"/>
       </g>
-    )
+    );
   }
 }
+
+ChartAnimationOverlay.propTypes = {
+  timeline: PropTypes.object.isRequired,
+  width: PropTypes.object.isRequired,
+  height: PropTypes.object.isRequired
+};
 
 export default ChartAnimationOverlay;

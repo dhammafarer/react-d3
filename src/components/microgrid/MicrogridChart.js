@@ -1,5 +1,5 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
+import PropTypes from 'prop-types';
 import * as d3 from 'd3';
 import LineChart from './LineChart.js';
 import XYaxis from './XYaxis.js';
@@ -9,7 +9,7 @@ const svgSize = props => {
   return {
     width: props.width + props.margin.left + props.margin.right,
     height: props.height + props.margin.top + props.margin.bottom
-  }
+  };
 };
 
 const transform = props => `translate(${props.margin.left}, ${props.margin.bottom})`;
@@ -28,7 +28,8 @@ const y = props => { return d3.scaleLinear()
 MicrogridChart.propTypes = {
   data: PropTypes.array.isRequired,
   width: PropTypes.number.isRequired,
-  height: PropTypes.number.isRequired
+  height: PropTypes.number.isRequired,
+  timeline: PropTypes.object.isRequired
 };
 
 
@@ -43,8 +44,8 @@ function MicrogridChart (props) {
         <XYaxis width={props.width} height={props.height} {...scales}/>
       </g>
     </svg>
-  )
+  );
 }
 
 
-export default MicrogridChart
+export default MicrogridChart;

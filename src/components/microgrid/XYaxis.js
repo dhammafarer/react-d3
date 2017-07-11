@@ -11,8 +11,8 @@ XYAxis.propTypes = {
 
 function XYAxis (props) {
   const xSettings = {
-    transform: `translate(0, ${props.height})`,
     axis: 'axisBottom',
+    transform: `translate(0, ${props.height})`,
     scale: props.x,
     ticks: 3,
     values: range([0, 24]),
@@ -32,7 +32,7 @@ function XYAxis (props) {
       <Axis {...props} {...xSettings} />
       <Axis {...props} {...ySettings} />
     </g>
-  )
+  );
 }
 
 

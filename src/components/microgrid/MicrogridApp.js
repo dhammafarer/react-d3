@@ -13,13 +13,13 @@ const size = {
 
 class MicrogridApp extends React.Component {
   constructor (props) {
-    super(props)
+    super(props);
     this.state = {
       data: [],
       timeline: new TimelineMax({paused: true, onUpdate: this.updateSlider.bind(this)}),
       progress: 0
-    }
-    this.handleRangeChange = this.handleRangeChange.bind(this)
+    };
+    this.handleRangeChange = this.handleRangeChange.bind(this);
   }
 
   handleRangeChange (e) {
@@ -44,7 +44,7 @@ class MicrogridApp extends React.Component {
         <MicrogridChart {...this.state} {...size} margin={margin}/>
         <MicrogridGraphic {...this.state}/>
       </div>
-    )
+    );
   }
 }
 

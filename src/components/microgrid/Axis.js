@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import * as d3 from 'd3';
 
 class Axis extends React.Component {
@@ -26,4 +27,13 @@ class Axis extends React.Component {
     );
   }
 }
+
+Axis.propTypes = {
+  axis: PropTypes.string.isRequired,
+  scale: PropTypes.func.isRequired,
+  ticks: PropTypes.number.isRequired,
+  format: PropTypes.func.isRequired,
+  transform: PropTypes.func.isRequired
+};
+
 export default Axis;

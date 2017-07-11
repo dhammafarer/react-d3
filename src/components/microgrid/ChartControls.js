@@ -1,11 +1,11 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
+import PropTypes from 'prop-types';
 
 ChartControls.propTypes = {
   tl: PropTypes.object.isRequired,
   progress: PropTypes.number.isRequired,
   handleRangeChange: PropTypes.func.isRequired
-}
+};
 
 function ChartControls ({tl, progress, handleRangeChange}) {
   return (
@@ -40,4 +40,4 @@ function ChartControls ({tl, progress, handleRangeChange}) {
 }
 
 
-export default ChartControls
+export default ChartControls;

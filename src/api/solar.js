@@ -7,4 +7,4 @@ export function getSolarIrradiance (date) {
     .then(response => response.text())
     .then(text => d3.csvParse(text))
     .then(array => formatSolarIrradiance(array, date));
-};
+}
