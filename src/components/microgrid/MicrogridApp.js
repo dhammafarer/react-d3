@@ -6,16 +6,13 @@ import MicrogridGraphic from './MicrogridGraphic.js';
 import ChartControls from './ChartControls.js';
 
 const margin = {top: 30, bottom: 30, left: 60, right: 30};
-const size = {
-  width: 600 - margin.left - margin.right,
-  height: 400 - margin.top - margin.bottom
-};
 
 class MicrogridApp extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
       data: [],
+      size: { width: 0, height: 0 },
       timeline: new TimelineMax({paused: true, onUpdate: this.updateSlider.bind(this)}),
       progress: 0
     };
@@ -33,15 +30,20 @@ class MicrogridApp extends React.Component {
   }
 
   componentDidMount () {
+    /* eslint-disable no-console */
+    let w = this.app.offsetWidth - margin.left - margin.right;
+    let h = this.app.offsetHeight - margin.top - margin.bottom;
+    this.setState({size: {width: w, height: h}});
+
     getSolarIrradiance('2010-06-01')
       .then(csv => this.setState({data: csv}));
   }
 
   render () {
     return (
-      <div id="microgrid-app">
+      <div id="microgrid-app" ref={app => this.app = app}>
         <ChartControls tl={this.state.timeline} progress={this.state.progress} handleRangeChange={this.handleRangeChange}/>
-        <MicrogridChart {...this.state} {...size} margin={margin}/>
+        <MicrogridChart {...this.state} {...this.state.size} margin={margin}/>
         <MicrogridGraphic {...this.state}/>
       </div>
     );
