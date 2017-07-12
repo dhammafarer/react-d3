@@ -30,9 +30,8 @@ class MicrogridApp extends React.Component {
   }
 
   componentDidMount () {
-    /* eslint-disable no-console */
     let w = this.app.offsetWidth - margin.left - margin.right;
-    let h = this.app.offsetHeight - margin.top - margin.bottom;
+    let h = this.app.offsetWidth * 0.75 - margin.top - margin.bottom;
     this.setState({size: {width: w, height: h}});
 
     getSolarIrradiance('2010-06-01')
