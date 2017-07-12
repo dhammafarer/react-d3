@@ -31,9 +31,17 @@ class MicrogridChart extends React.Component {
       <div className="card" ref={(chart) => this.chart = chart}>
         <svg {...svgSize(state)}>
           <g transform={transform(state)}>
-            <LineChart timeline={timeline} data={data} {...scales}/>
-            <ChartAnimationOverlay timeline={timeline} height={state.height} width={state.width}/>
-            <XYaxis width={state.width} height={state.height} {...scales}/>
+            <LineChart
+              timeline={timeline}
+              data={data} {...scales}/>
+            <ChartAnimationOverlay
+              timeline={timeline}
+              height={state.height}
+              width={state.width}/>
+            <XYaxis
+              width={state.width}
+              height={state.height}
+              {...scales}/>
           </g>
         </svg>
       </div>
@@ -67,7 +75,6 @@ function x(width, data) {
 
 function y(height, data) {
   return d3.scaleLinear()
-  //.domain([0, d3.max(data, d => d.value) + 100])
-    .domain([0, 1500])
+    .domain([0, d3.max(data, d => d.value) + 100])
     .range([height, 0]);
 }

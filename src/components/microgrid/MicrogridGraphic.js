@@ -13,11 +13,9 @@ class MicrogridGraphic extends React.Component {
 
   render () {
     return (
-      <div>
-        <svg width="600" height="300">
-          <rect ref={rect => this.rect = rect} fill="#333" x="10" y="10" width="600" height="400"/>
-        </svg>
-      </div>
+      <svg viewBox="0 0 400 300">
+        <rect ref={rect => this.rect = rect} fill="#333" x="10" y="10" width="1000" height="400"/>
+      </svg>
     );
   }
 }
