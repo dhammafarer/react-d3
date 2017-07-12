@@ -1,14 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { TimelineMax } from 'gsap';
 
 class MicrogridGraphic extends React.Component {
   componentDidMount () {
-    this.props.timeline
-      .to(this.rect, 0.75, {fill: "#ceeae6", ease: "Power2.easeIn"}, 0)
-      .to(this.rect, 1.25, {fill: "#9bcfea", ease: "Power2.easeIn"})
-      .to(this.rect, 0.5, {fill: "#2b7cb3", ease: "Power1.easeIn"})
-      .to(this.rect, 0.5, {fill: "#154167", ease: "Power2.easeIn"})
-      .to(this.rect, 0.5, {fill: "#333", ease: "Power2.easeIn"});
+    this.props.addToTimeline(this.animate(), "0");
+  }
+
+  animate () {
+    return new TimelineMax()
+      .to(this.rect, 6, {fill: "#ceeae6", ease: "Power2.easeIn"}, 0)
+      .to(this.rect, 6, {fill: "#9bcfea", ease: "Power2.easeIn"})
+      .to(this.rect, 6, {fill: "#2b7cb3", ease: "Power1.easeIn"})
+      .to(this.rect, 2, {fill: "#154167", ease: "Power2.easeIn"})
+      .to(this.rect, 4, {fill: "#333", ease: "Power2.easeIn"});
   }
 
   render () {
@@ -21,7 +26,8 @@ class MicrogridGraphic extends React.Component {
 }
 
 MicrogridGraphic.propTypes = {
-  timeline: PropTypes.object.isRequired
+  timeline: PropTypes.object.isRequired,
+  addToTimeline: PropTypes.func.isRequired
 };
 
 export default MicrogridGraphic;

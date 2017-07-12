@@ -1,12 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { TimelineMax } from 'gsap';
 
 class ChartAnimationOverlay extends React.Component {
-  componentDidUpdate () {
-    this.props.timeline
-      .set(this.rect, {opacity: 1}, 0)
-      .to(this.rect, 4, {width: 0, ease: 'Power0.easeNone'}, 0)
-      .to(this.line, 4, {x: this.props.width, ease: 'Power0.easeNone'}, 0);
+  componentDidMount () {
+    this.props
+      .addToTimeline(this.animate1(), "0");
+    this.props
+      .addToTimeline(this.animate2(), "12");
+  }
+
+  animate1 () {
+    return new TimelineMax()
+      .to(this.rect, 0, {opacity: 1}, 0.01)
+      .to(this.rect, 12, {width: this.props.width * 11 / 25, ease: 'Power0.easeNone'}, 0);
+  }
+
+  animate2 () {
+    return new TimelineMax()
+      .to(this.rect, 12, {width: 0, ease: 'Power0.easeNone'});
   }
 
   render () {
@@ -19,13 +31,12 @@ class ChartAnimationOverlay extends React.Component {
       fill: "white",
       stroke: "white",
       strokeWidth: "1px",
-      style: {opacity: 0}
+      opacity: "0"
     };
 
     return (
       <g>
         <rect ref={rect => this.rect = rect} {...rectProps}/>
-        <rect ref={line => this.line = line} x="0" width="0.5" height={this.props.height} fill="gray"/>
       </g>
     );
   }
@@ -34,7 +45,8 @@ class ChartAnimationOverlay extends React.Component {
 ChartAnimationOverlay.propTypes = {
   timeline: PropTypes.object.isRequired,
   width: PropTypes.number.isRequired,
-  height: PropTypes.number.isRequired
+  height: PropTypes.number.isRequired,
+  addToTimeline: PropTypes.func
 };
 
 export default ChartAnimationOverlay;

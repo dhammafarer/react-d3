@@ -23,7 +23,7 @@ class MicrogridChart extends React.Component {
   }
 
   render () {
-    const {data, timeline} = this.props;
+    const {data, timeline, addToTimeline} = this.props;
     const state = this.state;
     const scales = {x: x(state.width, data), y: y(state.height, data)};
 
@@ -36,6 +36,7 @@ class MicrogridChart extends React.Component {
               data={data} {...scales}/>
             <ChartAnimationOverlay
               timeline={timeline}
+              addToTimeline={addToTimeline}
               height={state.height}
               width={state.width}/>
             <XYaxis
@@ -51,7 +52,8 @@ class MicrogridChart extends React.Component {
 
 MicrogridChart.propTypes = {
   data: PropTypes.array.isRequired,
-  timeline: PropTypes.object.isRequired
+  timeline: PropTypes.object.isRequired,
+  addToTimeline: PropTypes.func.isRequired
 };
 
 export default MicrogridChart;
