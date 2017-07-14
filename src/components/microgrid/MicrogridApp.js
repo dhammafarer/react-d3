@@ -10,7 +10,7 @@ class MicrogridApp extends React.Component {
     super(props);
     this.state = {
       data: [],
-      timeline: new TimelineMax({paused: true, onUpdate: this.updateSlider.bind(this)}),
+      timeline: new TimelineMax({paused: false, onUpdate: this.updateSlider.bind(this)}),
       progress: 0
     };
     this.handleRangeChange = this.handleRangeChange.bind(this);
