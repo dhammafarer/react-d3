@@ -37,7 +37,7 @@ class MicrogridApp extends React.Component {
 
         <div className="columns">
           <div className="column">
-            <ChartControls tl={this.state.timeline} progress={this.state.progress} handleRangeChange={this.handleRangeChange}/>
+            <MicrogridGraphic {...this.state}/>
           </div>
         </div>
 
@@ -45,8 +45,11 @@ class MicrogridApp extends React.Component {
           <div className="column is-half">
             <MicrogridChart {...this.state}/>
           </div>
-          <div className="column is-half">
-            <MicrogridGraphic {...this.state}/>
+        </div>
+
+        <div className="columns">
+          <div className="column">
+            <ChartControls tl={this.state.timeline} progress={this.state.progress} handleRangeChange={this.handleRangeChange}/>
           </div>
         </div>
 
