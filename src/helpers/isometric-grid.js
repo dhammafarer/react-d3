@@ -11,15 +11,7 @@ export function isometricTileCoords ([rows, cols], [tileWidth, tileHeight]) {
     );
 }
 
-export function isometricSvgTilePoints (tileSize, tileCoordsTable) {
-  return flatten(tileCoordsTable).map(tile => getIsoTilePolygonPoints(tileSize, tile));
-}
-
-function flatten (array) {
-  return array.reduce((a,b) => a.concat(b), []);
-}
-
-function  getIsoTilePolygonPoints ([width, height], {x, y}) {
+export function isometricTilePolygonPoints ([width, height], {x, y}) {
   return [
     [x + width / 2, y],
     [x + width, y + height / 2],

@@ -1,5 +1,5 @@
 /* global describe it expect */
-import { isometricTileCoords, isometricSvgTilePoints } from './isometric-grid.js';
+import { isometricTileCoords, isometricTilePolygonPoints } from './isometric-grid.js';
 
 describe('isometricTileCoords', () => {
   it('outputs an array of isometric coords', () => {
@@ -15,14 +15,12 @@ describe('isometricTileCoords', () => {
   });
 });
 
-describe('isometricSvgTilePoints', () => {
+describe('isometricTilePolygoPoints', () => {
   it('given tile position, returns an array of polygon points', () => {
     let tileSize = [200, 100];
-    let tileCoordsTable = [
-      [{x: 100, y: 0}]
-    ];
-    let result = isometricSvgTilePoints(tileSize, tileCoordsTable);
-    let expected = ['200,0 300,50 200,100 100,50'];
+    let tileCoords = {x: 100, y: 0};
+    let result = isometricTilePolygonPoints(tileSize, tileCoords);
+    let expected = '200,0 300,50 200,100 100,50';
 
     expect(result).toEqual(expected);
   });
