@@ -42,26 +42,19 @@ class MicrogridGraphic extends React.Component {
 
   componentDidUpdate (prevProps, prevState) {
     if (prevState.tileWidth != this.state.tileWidth) {
-      this.graphic.style.height = this.state.tileHeight * (this.state.groundMap.length + 1) + 'px';
-      this.graphic.style.width = this.state.tileWidth * (this.state.groundMap.length + 1) + 'px';
-      this.graphic.style.padding = this.state.tileHeight / 2 + 'px';
+      let {height, width, padding} = this.graphicStyles();
+      this.graphic.style.height = height + 'px';
+      this.graphic.style.width = width + 'px';
+      this.graphic.style.padding = padding + 'px';
     }
   }
 
   graphicStyles () {
     return {
-      width: this.state.tileWidth * this.state.groundMap.length + 'px',
-      height: this.state.tileHeight * (this.state.groundMap.length + 2) + 'px',
-      padding: this.state.tileHeight + 'px'
+      height: this.state.tileHeight * (this.state.groundMap.length + 1),
+      width: this.state.tileWidth * (this.state.groundMap.length + 1),
+      padding: this.state.tileHeight / 2
     };
-  }
-
-  getTileHeight () {
-    return this.state.tileWidth / this.state.tileRatio;
-  }
-
-  grid () {
-    return this.ground().map(tile => Object.assign({}, tile, {type: 'grid'}));
   }
 
   ground () {
@@ -127,6 +120,8 @@ class MicrogridGraphic extends React.Component {
           <div className="dot" datatype={tile.type}/>
         </div>);
 
+    let {width, height, padding} = this.graphicStyles();
+
     return (
       <div className="system-graphic" ref={graphic => this.graphic = graphic}>
         <div className="graphic-content">
@@ -145,6 +140,16 @@ class MicrogridGraphic extends React.Component {
 
           <div className="markers">
             {markers}
+          </div>
+
+          <div className="network">
+            <svg width={width - padding * 2} height={height - padding * 2}>
+              <circle
+                cx={152.5 + this.state.tileWidth /2}
+                cy={0 + this.state.tileHeight /2}
+                r="5"
+              />
+            </svg>
           </div>
 
         </div>

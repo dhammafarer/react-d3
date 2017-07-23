@@ -1,3 +1,4 @@
+/* global describe it expect */
 import { formatSolarIrradiance } from './solar-output.js';
 import * as d3 from 'd3';
 
