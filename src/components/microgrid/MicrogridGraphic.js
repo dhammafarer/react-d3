@@ -156,7 +156,8 @@ class MicrogridGraphic extends React.Component {
           <div className="network">
             <svg width={width - padding * 2} height={height - padding * 2}>
               {this.tilePolygons().map(el =>
-                <polygon className="grid-tile" key={el.pos.toString()} points={el.points}/>
+                /* eslint-disable no-console */
+                <polygon onClick={(e) => console.log(e.target.dataset.pos)} className="grid-tile" key={el.pos} data-pos={el.pos} points={el.points}/>
               )}
             </svg>
           </div>
