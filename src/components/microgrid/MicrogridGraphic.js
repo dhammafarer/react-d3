@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './MicrogridChart.scss';
+import { isometricTileCoords, isometricSvgTilePoints } from '../../helpers/isometric-grid.js';
 
 const tiles = {
   grid: require('../../assets/0.png'),
@@ -94,6 +95,14 @@ class MicrogridGraphic extends React.Component {
     };
   }
 
+  isometricTileCoords () {
+    return isometricTileCoords([3,3], [this.state.tileWidth, this.state.tileHeight]);
+  }
+
+  isometricSvgTilePoints () {
+    return isometricSvgTilePoints([this.state.tileWidth, this.state.tileHeight], this.isometricTileCoords());
+  }
+
   render () {
     let grid = this.ground().map((tile, i) =>
       <div key={i} className="tile" style={this.groundTileStyles(tile.pos)}>
@@ -144,11 +153,9 @@ class MicrogridGraphic extends React.Component {
 
           <div className="network">
             <svg width={width - padding * 2} height={height - padding * 2}>
-              <circle
-                cx={152.5 + this.state.tileWidth /2}
-                cy={0 + this.state.tileHeight /2}
-                r="5"
-              />
+              {this.isometricSvgTilePoints().map((points, i) =>
+                <polygon className="grid-tile" key={i} points={points}/>
+              )}
             </svg>
           </div>
 
