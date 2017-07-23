@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './MicrogridChart.scss';
-import { isometricTileCoords, isometricSvgTilePoints } from '../../helpers/isometric-grid.js';
+import { isometricTileCoords, isometricTilePolygonPoints } from '../../helpers/isometric-grid.js';
 
 const tiles = {
   grid: require('../../assets/0.png'),
@@ -95,12 +95,14 @@ class MicrogridGraphic extends React.Component {
     };
   }
 
-  isometricTileCoords () {
+  tileCoords () {
     return isometricTileCoords([3,3], [this.state.tileWidth, this.state.tileHeight]);
   }
 
-  isometricSvgTilePoints () {
-    return isometricSvgTilePoints([this.state.tileWidth, this.state.tileHeight], this.isometricTileCoords());
+  tilePolygons () {
+    return this.tileCoords().map((row, y) => row.map((coords, x) => {
+      return {points: isometricTilePolygonPoints([this.state.tileWidth, this.state.tileHeight], coords), pos: [y, x]};
+    })).reduce((a,b) => a.concat(b), []);
   }
 
   render () {
@@ -153,8 +155,8 @@ class MicrogridGraphic extends React.Component {
 
           <div className="network">
             <svg width={width - padding * 2} height={height - padding * 2}>
-              {this.isometricSvgTilePoints().map((points, i) =>
-                <polygon className="grid-tile" key={i} points={points}/>
+              {this.tilePolygons().map(el =>
+                <polygon className="grid-tile" key={el.pos.toString()} points={el.points}/>
               )}
             </svg>
           </div>
