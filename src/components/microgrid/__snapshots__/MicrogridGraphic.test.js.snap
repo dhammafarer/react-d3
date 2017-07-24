@@ -1,0 +1,433 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MicrogridGraphic displays the graphic 1`] = `
+<div
+  className="system-graphic"
+>
+  <div
+    className="graphic-content"
+  >
+    <div
+      className="ground"
+    >
+      <div
+        className="tile"
+        style={
+          Object {
+            "left": "NaNpx",
+            "top": "NaNpx",
+            "width": "NaNpx",
+          }
+        }
+      >
+        <img
+          className="ground-tile"
+          src="grass.png"
+        />
+      </div>
+      <div
+        className="tile"
+        style={
+          Object {
+            "left": "NaNpx",
+            "top": "NaNpx",
+            "width": "NaNpx",
+          }
+        }
+      >
+        <img
+          className="ground-tile"
+          src="grass.png"
+        />
+      </div>
+      <div
+        className="tile"
+        style={
+          Object {
+            "left": "NaNpx",
+            "top": "NaNpx",
+            "width": "NaNpx",
+          }
+        }
+      >
+        <img
+          className="ground-tile"
+          src="grass.png"
+        />
+      </div>
+      <div
+        className="tile"
+        style={
+          Object {
+            "left": "NaNpx",
+            "top": "NaNpx",
+            "width": "NaNpx",
+          }
+        }
+      >
+        <img
+          className="ground-tile"
+          src="grass.png"
+        />
+      </div>
+      <div
+        className="tile"
+        style={
+          Object {
+            "left": "NaNpx",
+            "top": "NaNpx",
+            "width": "NaNpx",
+          }
+        }
+      >
+        <img
+          className="ground-tile"
+          src="grass.png"
+        />
+      </div>
+      <div
+        className="tile"
+        style={
+          Object {
+            "left": "NaNpx",
+            "top": "NaNpx",
+            "width": "NaNpx",
+          }
+        }
+      >
+        <img
+          className="ground-tile"
+          src="grass.png"
+        />
+      </div>
+      <div
+        className="tile"
+        style={
+          Object {
+            "left": "NaNpx",
+            "top": "NaNpx",
+            "width": "NaNpx",
+          }
+        }
+      >
+        <img
+          className="ground-tile"
+          src="stone.png"
+        />
+      </div>
+      <div
+        className="tile"
+        style={
+          Object {
+            "left": "NaNpx",
+            "top": "NaNpx",
+            "width": "NaNpx",
+          }
+        }
+      >
+        <img
+          className="ground-tile"
+          src="stone.png"
+        />
+      </div>
+      <div
+        className="tile"
+        style={
+          Object {
+            "left": "NaNpx",
+            "top": "NaNpx",
+            "width": "NaNpx",
+          }
+        }
+      >
+        <img
+          className="ground-tile"
+          src="grass.png"
+        />
+      </div>
+    </div>
+    <div
+      className="buildings"
+    >
+      <div
+        className="tile"
+        style={
+          Object {
+            "height": "NaNpx",
+            "left": "NaNpx",
+            "top": "NaNpx",
+            "width": "NaNpx",
+          }
+        }
+      >
+        <img
+          className="building-tile"
+          src="temple.png"
+        />
+      </div>
+      <div
+        className="tile"
+        style={
+          Object {
+            "height": "NaNpx",
+            "left": "NaNpx",
+            "top": "NaNpx",
+            "width": "NaNpx",
+          }
+        }
+      >
+        <img
+          className="building-tile"
+          src="solar.png"
+        />
+      </div>
+      <div
+        className="tile"
+        style={
+          Object {
+            "height": "NaNpx",
+            "left": "NaNpx",
+            "top": "NaNpx",
+            "width": "NaNpx",
+          }
+        }
+      >
+        <img
+          className="building-tile"
+          src="house.png"
+        />
+      </div>
+      <div
+        className="tile"
+        style={
+          Object {
+            "height": "NaNpx",
+            "left": "NaNpx",
+            "top": "NaNpx",
+            "width": "NaNpx",
+          }
+        }
+      >
+        <img
+          className="building-tile"
+          src="house.png"
+        />
+      </div>
+      <div
+        className="tile"
+        style={
+          Object {
+            "height": "NaNpx",
+            "left": "NaNpx",
+            "top": "NaNpx",
+            "width": "NaNpx",
+          }
+        }
+      >
+        <img
+          className="building-tile"
+          src="factory.png"
+        />
+      </div>
+    </div>
+    <div
+      className="markers"
+    >
+      <div
+        className="tile"
+        style={
+          Object {
+            "height": "NaNpx",
+            "left": "NaNpx",
+            "top": "NaNpx",
+            "width": "NaNpx",
+          }
+        }
+      >
+        <div
+          className="dot-background"
+        />
+        <div
+          className="dot"
+          datatype="temple"
+        />
+      </div>
+      <div
+        className="tile"
+        style={
+          Object {
+            "height": "NaNpx",
+            "left": "NaNpx",
+            "top": "NaNpx",
+            "width": "NaNpx",
+          }
+        }
+      >
+        <div
+          className="dot-background"
+        />
+        <div
+          className="dot"
+          datatype="solar"
+        />
+      </div>
+      <div
+        className="tile"
+        style={
+          Object {
+            "height": "NaNpx",
+            "left": "NaNpx",
+            "top": "NaNpx",
+            "width": "NaNpx",
+          }
+        }
+      >
+        <div
+          className="dot-background"
+        />
+        <div
+          className="dot"
+          datatype="house"
+        />
+      </div>
+      <div
+        className="tile"
+        style={
+          Object {
+            "height": "NaNpx",
+            "left": "NaNpx",
+            "top": "NaNpx",
+            "width": "NaNpx",
+          }
+        }
+      >
+        <div
+          className="dot-background"
+        />
+        <div
+          className="dot"
+          datatype="house"
+        />
+      </div>
+      <div
+        className="tile"
+        style={
+          Object {
+            "height": "NaNpx",
+            "left": "NaNpx",
+            "top": "NaNpx",
+            "width": "NaNpx",
+          }
+        }
+      >
+        <div
+          className="dot-background"
+        />
+        <div
+          className="dot"
+          datatype="factory"
+        />
+      </div>
+    </div>
+    <div
+      className="network"
+    >
+      <svg
+        height={NaN}
+        width={NaN}
+      >
+        <polygon
+          className="grid-tile"
+          data-pos={
+            Array [
+              0,
+              0,
+            ]
+          }
+          points="NaN,NaN NaN,NaN NaN,NaN NaN,NaN"
+        />
+        <polygon
+          className="grid-tile"
+          data-pos={
+            Array [
+              0,
+              1,
+            ]
+          }
+          points="NaN,NaN NaN,NaN NaN,NaN NaN,NaN"
+        />
+        <polygon
+          className="grid-tile"
+          data-pos={
+            Array [
+              0,
+              2,
+            ]
+          }
+          points="NaN,NaN NaN,NaN NaN,NaN NaN,NaN"
+        />
+        <polygon
+          className="grid-tile"
+          data-pos={
+            Array [
+              1,
+              0,
+            ]
+          }
+          points="NaN,NaN NaN,NaN NaN,NaN NaN,NaN"
+        />
+        <polygon
+          className="grid-tile"
+          data-pos={
+            Array [
+              1,
+              1,
+            ]
+          }
+          points="NaN,NaN NaN,NaN NaN,NaN NaN,NaN"
+        />
+        <polygon
+          className="grid-tile"
+          data-pos={
+            Array [
+              1,
+              2,
+            ]
+          }
+          points="NaN,NaN NaN,NaN NaN,NaN NaN,NaN"
+        />
+        <polygon
+          className="grid-tile"
+          data-pos={
+            Array [
+              2,
+              0,
+            ]
+          }
+          points="NaN,NaN NaN,NaN NaN,NaN NaN,NaN"
+        />
+        <polygon
+          className="grid-tile"
+          data-pos={
+            Array [
+              2,
+              1,
+            ]
+          }
+          points="NaN,NaN NaN,NaN NaN,NaN NaN,NaN"
+        />
+        <polygon
+          className="grid-tile"
+          data-pos={
+            Array [
+              2,
+              2,
+            ]
+          }
+          points="NaN,NaN NaN,NaN NaN,NaN NaN,NaN"
+        />
+      </svg>
+    </div>
+  </div>
+</div>
+`;
