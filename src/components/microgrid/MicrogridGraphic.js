@@ -20,14 +20,14 @@ class MicrogridGraphic extends React.Component {
     super(props);
     this.state = {
       size: {
-        width: 0,
-        height: 0,
-        padding: 0
+        width: 400,
+        height: 400 * tileRatio,
+        margin: [0, 0]
       },
-      grid: [3, 3],
+      gridSize: [3, 3],
       tile: {
         width: 200,
-        height: 0
+        height: 200 * tileRatio
       },
       groundMap: [
         ['grass', 'grass', 'grass'],
@@ -43,29 +43,20 @@ class MicrogridGraphic extends React.Component {
     };
   }
   componentDidMount () {
-    let width = this.graphic.offsetWidth / (this.state.grid[0] + 1);
-    let height = width / tileRatio;
+    this.setGraphicSize();
+  }
+
+  setGraphicSize () {
+    let componentWidth = this.graphic.offsetWidth;
+    let tileWidth = componentWidth / (this.state.gridSize[1] + 1);
+    let tileHeight = tileWidth / tileRatio;
+    let margin = [tileHeight / 2, tileWidth / 2];
+    let width = componentWidth - margin[1] * 2;
+    let height = tileHeight * (this.state.gridSize[1]);
     this.setState({
-      tile: {width, height}
+      size: {width, height, margin},
+      tile: {width: tileWidth, height: tileHeight}
     });
-  }
-
-  componentDidUpdate (prevProps, prevState) {
-    if (prevState.tile.width != this.state.tile.width) {
-      let {height, width, padding} = this.graphicStyles();
-      this.graphic.style.height = height + 'px';
-      this.graphic.style.width = width + 'px';
-      this.graphic.style.padding = padding + 'px';
-    }
-  }
-
-  graphicStyles () {
-    let {width, height} = this.state.tile;
-    return {
-      height: height * (this.state.grid[0] + 1),
-      width: width * (this.state.grid[0] + 1),
-      padding: height / 2
-    };
   }
 
   ground () {
@@ -91,7 +82,7 @@ class MicrogridGraphic extends React.Component {
   groundTileStyles ([x, y]) {
     let {width, height} = this.state.tile;
     return {
-      left: width / 2 * (this.state.grid[0] + x - y - 1) + 'px',
+      left: width / 2 * (this.state.gridSize[0] + x - y - 1) + 'px',
       top: height / 2 * (x + y) + 'px',
       width: width + 'px'
     };
@@ -100,7 +91,7 @@ class MicrogridGraphic extends React.Component {
   buildingTileStyles ([x, y]) {
     let {width, height} = this.state.tile;
     return {
-      left: width / 2 * (this.state.grid[0] + x - y - 1) + 'px',
+      left: width / 2 * (this.state.gridSize[0] + x - y - 1) + 'px',
       top: height / 2 * (x + y) + 'px',
       width: width + 'px',
       height: height * 2 + 'px'
@@ -109,7 +100,7 @@ class MicrogridGraphic extends React.Component {
 
   tileCoords () {
     let {width, height} = this.state.tile;
-    return isometricTileCoords(this.state.grid, [width, height]);
+    return isometricTileCoords(this.state.gridSize, [width, height]);
   }
 
   tilePolygons () {
@@ -120,6 +111,13 @@ class MicrogridGraphic extends React.Component {
   }
 
   render () {
+    let {width, height, margin} = this.state.size;
+    let graphicStyles = {
+      width: width + 'px',
+      height: height + 'px',
+      margin: margin[0] + 'px ' + margin[1] + 'px'
+    };
+
     let ground = this.ground().map((tile, i) =>
       <div key={i} className="tile" style={this.groundTileStyles(tile.pos)}>
         <img className="ground-tile" src={tiles[tile.type]}/>
@@ -144,11 +142,13 @@ class MicrogridGraphic extends React.Component {
       <polygon className="grid-tile" key={el.pos} data-pos={el.pos} points={el.points}/>
     );
 
-    let {width, height, padding} = this.graphicStyles();
-
     return (
-      <div className="system-graphic" ref={graphic => this.graphic = graphic}>
-        <div className="graphic-content">
+      <div className="system-graphic"
+        ref={graphic => this.graphic = graphic}
+      >
+        <div className="graphic-content"
+          style={graphicStyles}
+        >
 
           <div className="ground">
             {ground}
@@ -162,11 +162,9 @@ class MicrogridGraphic extends React.Component {
             {markers}
           </div>
 
-          <div className="network">
-            <svg width={width - padding * 2} height={height - padding * 2}>
-              {grid}
-            </svg>
-          </div>
+          <svg className="network">
+            {grid}
+          </svg>
 
         </div>
       </div>
