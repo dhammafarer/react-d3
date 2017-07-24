@@ -8,11 +8,10 @@ BuildingTiles.propTypes = {
 function BuildingTiles ({buildings}) {
   return (
     <div className="buildings">
-      {buildings.filter(el => el.tile)
-        .map((el, i) =>
-          <div key={i} className="tile" style={el.style}>
-            <img className="building-tile" src={el.tile.src}/>
-          </div>)}
+      {buildings.map((el, i) =>
+        <div key={i} className="tile" style={el.style}>
+          <img className="building-tile" src={el.tile.src}/>
+        </div>)}
     </div>
   );
 }

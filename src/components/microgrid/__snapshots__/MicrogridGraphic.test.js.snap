@@ -6,6 +6,13 @@ exports[`MicrogridGraphic displays the graphic 1`] = `
 >
   <div
     className="graphic-content"
+    style={
+      Object {
+        "height": 345.9210147016431,
+        "margin": "57.653502450273855px 100px",
+        "width": 600,
+      }
+    }
   >
     <div
       className="ground"
@@ -14,9 +21,9 @@ exports[`MicrogridGraphic displays the graphic 1`] = `
         className="tile"
         style={
           Object {
-            "left": "NaNpx",
-            "top": "NaNpx",
-            "width": "NaNpx",
+            "left": 200,
+            "top": 0,
+            "width": 200,
           }
         }
       >
@@ -29,9 +36,9 @@ exports[`MicrogridGraphic displays the graphic 1`] = `
         className="tile"
         style={
           Object {
-            "left": "NaNpx",
-            "top": "NaNpx",
-            "width": "NaNpx",
+            "left": 300,
+            "top": 57.653502450273855,
+            "width": 200,
           }
         }
       >
@@ -44,9 +51,9 @@ exports[`MicrogridGraphic displays the graphic 1`] = `
         className="tile"
         style={
           Object {
-            "left": "NaNpx",
-            "top": "NaNpx",
-            "width": "NaNpx",
+            "left": 400,
+            "top": 115.30700490054771,
+            "width": 200,
           }
         }
       >
@@ -59,9 +66,9 @@ exports[`MicrogridGraphic displays the graphic 1`] = `
         className="tile"
         style={
           Object {
-            "left": "NaNpx",
-            "top": "NaNpx",
-            "width": "NaNpx",
+            "left": 100,
+            "top": 57.653502450273855,
+            "width": 200,
           }
         }
       >
@@ -74,9 +81,9 @@ exports[`MicrogridGraphic displays the graphic 1`] = `
         className="tile"
         style={
           Object {
-            "left": "NaNpx",
-            "top": "NaNpx",
-            "width": "NaNpx",
+            "left": 200,
+            "top": 115.30700490054771,
+            "width": 200,
           }
         }
       >
@@ -89,9 +96,9 @@ exports[`MicrogridGraphic displays the graphic 1`] = `
         className="tile"
         style={
           Object {
-            "left": "NaNpx",
-            "top": "NaNpx",
-            "width": "NaNpx",
+            "left": 300,
+            "top": 172.96050735082156,
+            "width": 200,
           }
         }
       >
@@ -104,39 +111,39 @@ exports[`MicrogridGraphic displays the graphic 1`] = `
         className="tile"
         style={
           Object {
-            "left": "NaNpx",
-            "top": "NaNpx",
-            "width": "NaNpx",
+            "left": 0,
+            "top": 115.30700490054771,
+            "width": 200,
           }
         }
       >
         <img
           className="ground-tile"
-          src="stone.png"
+          src="grass.png"
         />
       </div>
       <div
         className="tile"
         style={
           Object {
-            "left": "NaNpx",
-            "top": "NaNpx",
-            "width": "NaNpx",
+            "left": 100,
+            "top": 172.96050735082156,
+            "width": 200,
           }
         }
       >
         <img
           className="ground-tile"
-          src="stone.png"
+          src="grass.png"
         />
       </div>
       <div
         className="tile"
         style={
           Object {
-            "left": "NaNpx",
-            "top": "NaNpx",
-            "width": "NaNpx",
+            "left": 200,
+            "top": 230.61400980109542,
+            "width": 200,
           }
         }
       >
@@ -153,10 +160,9 @@ exports[`MicrogridGraphic displays the graphic 1`] = `
         className="tile"
         style={
           Object {
-            "height": "NaNpx",
-            "left": "NaNpx",
-            "top": "NaNpx",
-            "width": "NaNpx",
+            "left": 200,
+            "top": 0,
+            "width": 200,
           }
         }
       >
@@ -169,10 +175,9 @@ exports[`MicrogridGraphic displays the graphic 1`] = `
         className="tile"
         style={
           Object {
-            "height": "NaNpx",
-            "left": "NaNpx",
-            "top": "NaNpx",
-            "width": "NaNpx",
+            "left": 400,
+            "top": 115.30700490054771,
+            "width": 200,
           }
         }
       >
@@ -185,10 +190,9 @@ exports[`MicrogridGraphic displays the graphic 1`] = `
         className="tile"
         style={
           Object {
-            "height": "NaNpx",
-            "left": "NaNpx",
-            "top": "NaNpx",
-            "width": "NaNpx",
+            "left": 100,
+            "top": 57.653502450273855,
+            "width": 200,
           }
         }
       >
@@ -201,10 +205,9 @@ exports[`MicrogridGraphic displays the graphic 1`] = `
         className="tile"
         style={
           Object {
-            "height": "NaNpx",
-            "left": "NaNpx",
-            "top": "NaNpx",
-            "width": "NaNpx",
+            "left": 300,
+            "top": 172.96050735082156,
+            "width": 200,
           }
         }
       >
@@ -217,10 +220,9 @@ exports[`MicrogridGraphic displays the graphic 1`] = `
         className="tile"
         style={
           Object {
-            "height": "NaNpx",
-            "left": "NaNpx",
-            "top": "NaNpx",
-            "width": "NaNpx",
+            "left": 100,
+            "top": 172.96050735082156,
+            "width": 200,
           }
         }
       >
@@ -230,204 +232,102 @@ exports[`MicrogridGraphic displays the graphic 1`] = `
         />
       </div>
     </div>
-    <div
-      className="markers"
+    <svg
+      className="grid"
+      height={345.9210147016431}
+      width={600}
     >
-      <div
-        className="tile"
-        style={
-          Object {
-            "height": "NaNpx",
-            "left": "NaNpx",
-            "top": "NaNpx",
-            "width": "NaNpx",
-          }
+      <polygon
+        className="grid-tile"
+        data-pos={
+          Array [
+            0,
+            0,
+          ]
         }
-      >
-        <div
-          className="dot-background"
-        />
-        <div
-          className="dot"
-          datatype="temple"
-        />
-      </div>
-      <div
-        className="tile"
-        style={
-          Object {
-            "height": "NaNpx",
-            "left": "NaNpx",
-            "top": "NaNpx",
-            "width": "NaNpx",
-          }
+        points="300,0 400,57.653502450273855 300,115.30700490054771 200,57.653502450273855"
+      />
+      <polygon
+        className="grid-tile"
+        data-pos={
+          Array [
+            0,
+            1,
+          ]
         }
-      >
-        <div
-          className="dot-background"
-        />
-        <div
-          className="dot"
-          datatype="solar"
-        />
-      </div>
-      <div
-        className="tile"
-        style={
-          Object {
-            "height": "NaNpx",
-            "left": "NaNpx",
-            "top": "NaNpx",
-            "width": "NaNpx",
-          }
+        points="400,57.653502450273855 500,115.30700490054771 400,172.96050735082156 300,115.30700490054771"
+      />
+      <polygon
+        className="grid-tile"
+        data-pos={
+          Array [
+            0,
+            2,
+          ]
         }
-      >
-        <div
-          className="dot-background"
-        />
-        <div
-          className="dot"
-          datatype="house"
-        />
-      </div>
-      <div
-        className="tile"
-        style={
-          Object {
-            "height": "NaNpx",
-            "left": "NaNpx",
-            "top": "NaNpx",
-            "width": "NaNpx",
-          }
+        points="500,115.30700490054771 600,172.96050735082156 500,230.61400980109542 400,172.96050735082156"
+      />
+      <polygon
+        className="grid-tile"
+        data-pos={
+          Array [
+            1,
+            0,
+          ]
         }
-      >
-        <div
-          className="dot-background"
-        />
-        <div
-          className="dot"
-          datatype="house"
-        />
-      </div>
-      <div
-        className="tile"
-        style={
-          Object {
-            "height": "NaNpx",
-            "left": "NaNpx",
-            "top": "NaNpx",
-            "width": "NaNpx",
-          }
+        points="200,57.653502450273855 300,115.30700490054771 200,172.96050735082156 100,115.30700490054771"
+      />
+      <polygon
+        className="grid-tile"
+        data-pos={
+          Array [
+            1,
+            1,
+          ]
         }
-      >
-        <div
-          className="dot-background"
-        />
-        <div
-          className="dot"
-          datatype="factory"
-        />
-      </div>
-    </div>
-    <div
-      className="network"
-    >
-      <svg
-        height={NaN}
-        width={NaN}
-      >
-        <polygon
-          className="grid-tile"
-          data-pos={
-            Array [
-              0,
-              0,
-            ]
-          }
-          points="NaN,NaN NaN,NaN NaN,NaN NaN,NaN"
-        />
-        <polygon
-          className="grid-tile"
-          data-pos={
-            Array [
-              0,
-              1,
-            ]
-          }
-          points="NaN,NaN NaN,NaN NaN,NaN NaN,NaN"
-        />
-        <polygon
-          className="grid-tile"
-          data-pos={
-            Array [
-              0,
-              2,
-            ]
-          }
-          points="NaN,NaN NaN,NaN NaN,NaN NaN,NaN"
-        />
-        <polygon
-          className="grid-tile"
-          data-pos={
-            Array [
-              1,
-              0,
-            ]
-          }
-          points="NaN,NaN NaN,NaN NaN,NaN NaN,NaN"
-        />
-        <polygon
-          className="grid-tile"
-          data-pos={
-            Array [
-              1,
-              1,
-            ]
-          }
-          points="NaN,NaN NaN,NaN NaN,NaN NaN,NaN"
-        />
-        <polygon
-          className="grid-tile"
-          data-pos={
-            Array [
-              1,
-              2,
-            ]
-          }
-          points="NaN,NaN NaN,NaN NaN,NaN NaN,NaN"
-        />
-        <polygon
-          className="grid-tile"
-          data-pos={
-            Array [
-              2,
-              0,
-            ]
-          }
-          points="NaN,NaN NaN,NaN NaN,NaN NaN,NaN"
-        />
-        <polygon
-          className="grid-tile"
-          data-pos={
-            Array [
-              2,
-              1,
-            ]
-          }
-          points="NaN,NaN NaN,NaN NaN,NaN NaN,NaN"
-        />
-        <polygon
-          className="grid-tile"
-          data-pos={
-            Array [
-              2,
-              2,
-            ]
-          }
-          points="NaN,NaN NaN,NaN NaN,NaN NaN,NaN"
-        />
-      </svg>
-    </div>
+        points="300,115.30700490054771 400,172.96050735082156 300,230.61400980109542 200,172.96050735082156"
+      />
+      <polygon
+        className="grid-tile"
+        data-pos={
+          Array [
+            1,
+            2,
+          ]
+        }
+        points="400,172.96050735082156 500,230.61400980109542 400,288.2675122513693 300,230.61400980109542"
+      />
+      <polygon
+        className="grid-tile"
+        data-pos={
+          Array [
+            2,
+            0,
+          ]
+        }
+        points="100,115.30700490054771 200,172.96050735082156 100,230.61400980109542 0,172.96050735082156"
+      />
+      <polygon
+        className="grid-tile"
+        data-pos={
+          Array [
+            2,
+            1,
+          ]
+        }
+        points="200,172.96050735082156 300,230.61400980109542 200,288.2675122513693 100,230.61400980109542"
+      />
+      <polygon
+        className="grid-tile"
+        data-pos={
+          Array [
+            2,
+            2,
+          ]
+        }
+        points="300,230.61400980109542 400,288.2675122513693 300,345.9210147016431 200,288.2675122513693"
+      />
+    </svg>
   </div>
 </div>
 `;

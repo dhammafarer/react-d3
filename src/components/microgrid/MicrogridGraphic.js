@@ -6,6 +6,7 @@ import * as o from '../../data/microgrid-objects.js';
 import GroundTiles from './GroundTiles.js';
 import BuildingTiles from './BuildingTiles.js';
 import IsometricGrid from './IsometricGrid.js';
+import BuildingMarkers from './BuildingMarkers.js';
 
 const tileRatio = 1.7345;
 
@@ -93,19 +94,17 @@ class MicrogridGraphic extends React.Component {
     };
 
     let ground = this.mapToIso(this.state.groundMap);
-    let buildings = this.mapToIso(this.state.buildingsMap);
+    let buildings = this.mapToIso(this.state.buildingsMap).filter(el => el.tile);
     let grid = this.tilePolygons();
 
     return (
-      <div className="system-graphic"
-        ref={graphic => this.graphic = graphic}>
-
-        <div className="graphic-content"
-          style={graphicStyles}>
+      <div className="system-graphic" ref={graphic => this.graphic = graphic}>
+        <div className="graphic-content" style={graphicStyles}>
 
           <GroundTiles ground={ground}/>
           <BuildingTiles buildings={buildings}/>
           <IsometricGrid grid={grid} width={width} height={height}/>
+          <BuildingMarkers data={buildings} height={this.state.tile.height}/>
 
         </div>
       </div>
