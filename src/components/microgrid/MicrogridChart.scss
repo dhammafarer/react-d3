@@ -1,9 +1,7 @@
 .system-graphic {
-  border: 1px solid blue;
 }
 
 .graphic-content {
-  border: 1px solid green;
   position: relative;
 }
 
@@ -20,11 +18,14 @@
   height: 100%;
 }
 
+.grid {
+  position: absolute;
+}
+
 .grid-tile {
-  fill: transparent;
+  fill: none;
   stroke: gray;
   stroke-width: 1px;
-  stroke-dasharray: 4 8;
 }
 
 .dot, .dot-background {
@@ -71,10 +72,4 @@
     transform-origin: 0% 0%;
     transform: scale(1.6) translate(-50%, -50%);
   }
-}
-
-.network {
-  border: 1px solid red;
-  width: 100%;
-  height: 100%;
 }

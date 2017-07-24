@@ -17,7 +17,7 @@ describe('MicrogridGraphic', () => {
 
 function createNodeMock (element) {
   if (element.type === 'div') {
-    return {style: {}};
+    return {style: {}, offsetWidth: 800};
   }
   return null;
 }
