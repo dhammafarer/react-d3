@@ -13,13 +13,22 @@ const tiles = {
   house: require('../../assets/house.png')
 };
 
+const tileRatio = 1.7345;
+
 class MicrogridGraphic extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      tileRatio: 1.7345,
-      tileWidth: 200,
-      tileHeight: 0,
+      size: {
+        width: 0,
+        height: 0,
+        padding: 0
+      },
+      grid: [3, 3],
+      tile: {
+        width: 200,
+        height: 0
+      },
       groundMap: [
         ['grass', 'grass', 'grass'],
         ['grass', 'grass', 'grass'],
@@ -34,15 +43,15 @@ class MicrogridGraphic extends React.Component {
     };
   }
   componentDidMount () {
-    let width = this.graphic.offsetWidth / (this.state.groundMap.length + 1);
+    let width = this.graphic.offsetWidth / (this.state.grid[0] + 1);
+    let height = width / tileRatio;
     this.setState({
-      tileWidth: width,
-      tileHeight: width / this.state.tileRatio
+      tile: {width, height}
     });
   }
 
   componentDidUpdate (prevProps, prevState) {
-    if (prevState.tileWidth != this.state.tileWidth) {
+    if (prevState.tile.width != this.state.tile.width) {
       let {height, width, padding} = this.graphicStyles();
       this.graphic.style.height = height + 'px';
       this.graphic.style.width = width + 'px';
@@ -51,10 +60,11 @@ class MicrogridGraphic extends React.Component {
   }
 
   graphicStyles () {
+    let {width, height} = this.state.tile;
     return {
-      height: this.state.tileHeight * (this.state.groundMap.length + 1),
-      width: this.state.tileWidth * (this.state.groundMap.length + 1),
-      padding: this.state.tileHeight / 2
+      height: height * (this.state.grid[0] + 1),
+      width: width * (this.state.grid[0] + 1),
+      padding: height / 2
     };
   }
 
@@ -79,29 +89,33 @@ class MicrogridGraphic extends React.Component {
   }
 
   groundTileStyles ([x, y]) {
+    let {width, height} = this.state.tile;
     return {
-      left: this.state.tileWidth / 2 * (this.state.groundMap.length + x - y - 1) + 'px',
-      top: this.state.tileHeight / 2 * (x + y) + 'px',
-      width: this.state.tileWidth + 'px'
+      left: width / 2 * (this.state.grid[0] + x - y - 1) + 'px',
+      top: height / 2 * (x + y) + 'px',
+      width: width + 'px'
     };
   }
 
   buildingTileStyles ([x, y]) {
+    let {width, height} = this.state.tile;
     return {
-      left: this.state.tileWidth / 2 * (this.state.groundMap.length + x - y - 1) + 'px',
-      top: this.state.tileHeight / 2 * (x + y) + 'px',
-      width: this.state.tileWidth + 'px',
-      height: this.state.tileHeight * 2 + 'px'
+      left: width / 2 * (this.state.grid[0] + x - y - 1) + 'px',
+      top: height / 2 * (x + y) + 'px',
+      width: width + 'px',
+      height: height * 2 + 'px'
     };
   }
 
   tileCoords () {
-    return isometricTileCoords([3,3], [this.state.tileWidth, this.state.tileHeight]);
+    let {width, height} = this.state.tile;
+    return isometricTileCoords(this.state.grid, [width, height]);
   }
 
   tilePolygons () {
+    let {width, height} = this.state.tile;
     return this.tileCoords().map((row, y) => row.map((coords, x) => {
-      return {points: isometricTilePolygonPoints([this.state.tileWidth, this.state.tileHeight], coords), pos: [y, x]};
+      return {points: isometricTilePolygonPoints([width, height], coords), pos: [y, x]};
     })).reduce((a,b) => a.concat(b), []);
   }
 
