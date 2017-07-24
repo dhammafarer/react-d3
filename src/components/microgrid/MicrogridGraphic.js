@@ -106,11 +106,6 @@ class MicrogridGraphic extends React.Component {
   }
 
   render () {
-    let grid = this.ground().map((tile, i) =>
-      <div key={i} className="tile" style={this.groundTileStyles(tile.pos)}>
-        <img className="grid-tile" src={tiles['grid']}/>
-      </div>);
-
     let ground = this.ground().map((tile, i) =>
       <div key={i} className="tile" style={this.groundTileStyles(tile.pos)}>
         <img className="ground-tile" src={tiles[tile.type]}/>
@@ -131,15 +126,15 @@ class MicrogridGraphic extends React.Component {
           <div className="dot" datatype={tile.type}/>
         </div>);
 
+    let grid = this.tilePolygons().map(el =>
+      <polygon className="grid-tile" key={el.pos} data-pos={el.pos} points={el.points}/>
+    );
+
     let {width, height, padding} = this.graphicStyles();
 
     return (
       <div className="system-graphic" ref={graphic => this.graphic = graphic}>
         <div className="graphic-content">
-
-          <div className="grid">
-            {grid}
-          </div>
 
           <div className="ground">
             {ground}
@@ -155,10 +150,7 @@ class MicrogridGraphic extends React.Component {
 
           <div className="network">
             <svg width={width - padding * 2} height={height - padding * 2}>
-              {this.tilePolygons().map(el =>
-                /* eslint-disable no-console */
-                <polygon onClick={(e) => console.log(e.target.dataset.pos)} className="grid-tile" key={el.pos} data-pos={el.pos} points={el.points}/>
-              )}
+              {grid}
             </svg>
           </div>
 
