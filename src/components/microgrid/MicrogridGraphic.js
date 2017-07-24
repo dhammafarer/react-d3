@@ -6,6 +6,7 @@ import * as o from '../../data/microgrid-objects.js';
 import GroundTiles from './GroundTiles.js';
 import BuildingTiles from './BuildingTiles.js';
 import IsometricGrid from './IsometricGrid.js';
+import NetworkLines from './NetworkLines.js';
 import BuildingMarkers from './BuildingMarkers.js';
 
 const tileRatio = 1.7345;
@@ -19,21 +20,23 @@ class MicrogridGraphic extends React.Component {
         height: 400 * tileRatio,
         margin: [0, 0]
       },
-      gridSize: [3, 3],
+      gridSize: [4, 4],
       tile: {
         width: 200,
         height: 200 * tileRatio
       },
       groundMap: [
-        [o.grass, o.grass, o.grass],
-        [o.grass, o.grass, o.grass],
-        [o.grass, o.grass, o.grass]
+        [o.grass, o.grass, o.grass, o.grass],
+        [o.grass, o.grass, o.grass, o.grass],
+        [o.grass, o.grass, o.grass, o.grass],
+        [o.stone, o.stone, o.grass, o.grass]
 
       ],
       buildingsMap: [
-        [o.temple, null, o.solar],
-        [o.house, null, o.house],
-        [null, o.factory, null]
+        [null, o.temple, null, o.house],
+        [o.house, null, null, o.house],
+        [null, null, o.solar, null],
+        [null, o.factory, null, null]
       ]
     };
   }
@@ -102,8 +105,9 @@ class MicrogridGraphic extends React.Component {
         <div className="graphic-content" style={graphicStyles}>
 
           <GroundTiles ground={ground}/>
-          <BuildingTiles buildings={buildings}/>
           <IsometricGrid grid={grid} width={width} height={height}/>
+          <BuildingTiles buildings={buildings}/>
+          <NetworkLines data={buildings} tile={this.state.tile} width={width} height={height}/>
           <BuildingMarkers data={buildings} height={this.state.tile.height}/>
 
         </div>

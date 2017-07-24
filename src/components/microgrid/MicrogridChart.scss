@@ -73,3 +73,31 @@
     transform: scale(1.6) translate(-50%, -50%);
   }
 }
+
+.powerline, .powerflow {
+  fill: none;
+  opacity: 0.6;
+}
+
+.powerline {
+  stroke: darkgray;
+  stroke-width: 3;
+}
+
+.powerflow {
+  stroke: white;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-dasharray: 1 10;
+  animation: powerflow 15s infinite linear forwards;
+}
+
+@keyframes powerflow {
+  0% {
+    stroke-dashoffset: 0;
+  }
+
+  100% {
+    stroke-dashoffset: -250;
+  }
+}
