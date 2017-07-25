@@ -81,7 +81,7 @@ class MicrogridGraphic extends React.Component {
       margin: margin[0] + 'px ' + margin[1] + 'px'
     };
 
-    let ground = this.mapToIso(this.props.terrainMap);
+    let ground = this.mapToIso(this.props.terrainMap).filter(el => el.tile);
     let buildings = this.mapToIso(this.props.buildingsMap).filter(el => el.tile);
     let grid = this.tilePolygons();
 
