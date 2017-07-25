@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './MicrogridChart.scss';
-import { isometricTileCoords, isometricTilePolygonPoints } from '../../helpers/isometric-grid.js';
-import * as o from '../../data/microgrid-objects.js';
+import './MicrogridGraphic.scss';
+import { isometricTileCoords, isometricTilePolygonPoints } from '../../../helpers/isometric-grid.js';
+import * as o from '../../../data/microgrid-objects.js';
 import GroundTiles from './GroundTiles.js';
 import BuildingTiles from './BuildingTiles.js';
 import IsometricGrid from './IsometricGrid.js';

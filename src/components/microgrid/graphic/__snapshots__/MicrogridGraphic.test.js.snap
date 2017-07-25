@@ -1,0 +1,732 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MicrogridGraphic displays the graphic 1`] = `
+<div
+  className="system-graphic"
+>
+  <div
+    className="graphic-content"
+    style={
+      Object {
+        "height": 368.9824156817527,
+        "margin": "46.122801960219086px 80px",
+        "width": 640,
+      }
+    }
+  >
+    <div
+      className="ground"
+    >
+      <div
+        className="tile"
+        style={
+          Object {
+            "left": 240,
+            "top": 0,
+            "width": 160,
+          }
+        }
+      >
+        <img
+          className="ground-tile"
+          src="grass.png"
+        />
+      </div>
+      <div
+        className="tile"
+        style={
+          Object {
+            "left": 320,
+            "top": 46.122801960219086,
+            "width": 160,
+          }
+        }
+      >
+        <img
+          className="ground-tile"
+          src="grass.png"
+        />
+      </div>
+      <div
+        className="tile"
+        style={
+          Object {
+            "left": 400,
+            "top": 92.24560392043817,
+            "width": 160,
+          }
+        }
+      >
+        <img
+          className="ground-tile"
+          src="grass.png"
+        />
+      </div>
+      <div
+        className="tile"
+        style={
+          Object {
+            "left": 480,
+            "top": 138.36840588065726,
+            "width": 160,
+          }
+        }
+      >
+        <img
+          className="ground-tile"
+          src="grass.png"
+        />
+      </div>
+      <div
+        className="tile"
+        style={
+          Object {
+            "left": 160,
+            "top": 46.122801960219086,
+            "width": 160,
+          }
+        }
+      >
+        <img
+          className="ground-tile"
+          src="grass.png"
+        />
+      </div>
+      <div
+        className="tile"
+        style={
+          Object {
+            "left": 240,
+            "top": 92.24560392043817,
+            "width": 160,
+          }
+        }
+      >
+        <img
+          className="ground-tile"
+          src="grass.png"
+        />
+      </div>
+      <div
+        className="tile"
+        style={
+          Object {
+            "left": 320,
+            "top": 138.36840588065726,
+            "width": 160,
+          }
+        }
+      >
+        <img
+          className="ground-tile"
+          src="grass.png"
+        />
+      </div>
+      <div
+        className="tile"
+        style={
+          Object {
+            "left": 400,
+            "top": 184.49120784087634,
+            "width": 160,
+          }
+        }
+      >
+        <img
+          className="ground-tile"
+          src="grass.png"
+        />
+      </div>
+      <div
+        className="tile"
+        style={
+          Object {
+            "left": 80,
+            "top": 92.24560392043817,
+            "width": 160,
+          }
+        }
+      >
+        <img
+          className="ground-tile"
+          src="grass.png"
+        />
+      </div>
+      <div
+        className="tile"
+        style={
+          Object {
+            "left": 160,
+            "top": 138.36840588065726,
+            "width": 160,
+          }
+        }
+      >
+        <img
+          className="ground-tile"
+          src="grass.png"
+        />
+      </div>
+      <div
+        className="tile"
+        style={
+          Object {
+            "left": 240,
+            "top": 184.49120784087634,
+            "width": 160,
+          }
+        }
+      >
+        <img
+          className="ground-tile"
+          src="grass.png"
+        />
+      </div>
+      <div
+        className="tile"
+        style={
+          Object {
+            "left": 320,
+            "top": 230.61400980109542,
+            "width": 160,
+          }
+        }
+      >
+        <img
+          className="ground-tile"
+          src="grass.png"
+        />
+      </div>
+      <div
+        className="tile"
+        style={
+          Object {
+            "left": 0,
+            "top": 138.36840588065726,
+            "width": 160,
+          }
+        }
+      >
+        <img
+          className="ground-tile"
+          src="stone.png"
+        />
+      </div>
+      <div
+        className="tile"
+        style={
+          Object {
+            "left": 80,
+            "top": 184.49120784087634,
+            "width": 160,
+          }
+        }
+      >
+        <img
+          className="ground-tile"
+          src="stone.png"
+        />
+      </div>
+      <div
+        className="tile"
+        style={
+          Object {
+            "left": 160,
+            "top": 230.61400980109542,
+            "width": 160,
+          }
+        }
+      >
+        <img
+          className="ground-tile"
+          src="grass.png"
+        />
+      </div>
+      <div
+        className="tile"
+        style={
+          Object {
+            "left": 240,
+            "top": 276.7368117613145,
+            "width": 160,
+          }
+        }
+      >
+        <img
+          className="ground-tile"
+          src="grass.png"
+        />
+      </div>
+    </div>
+    <svg
+      className="grid"
+      height={368.9824156817527}
+      width={640}
+    >
+      <polygon
+        className="grid-tile"
+        data-pos={
+          Array [
+            0,
+            0,
+          ]
+        }
+        points="320,0 400,46.122801960219086 320,92.24560392043817 240,46.122801960219086"
+      />
+      <polygon
+        className="grid-tile"
+        data-pos={
+          Array [
+            0,
+            1,
+          ]
+        }
+        points="400,46.122801960219086 480,92.24560392043817 400,138.36840588065726 320,92.24560392043817"
+      />
+      <polygon
+        className="grid-tile"
+        data-pos={
+          Array [
+            0,
+            2,
+          ]
+        }
+        points="480,92.24560392043817 560,138.36840588065726 480,184.49120784087634 400,138.36840588065726"
+      />
+      <polygon
+        className="grid-tile"
+        data-pos={
+          Array [
+            0,
+            3,
+          ]
+        }
+        points="560,138.36840588065726 640,184.49120784087634 560,230.61400980109545 480,184.49120784087634"
+      />
+      <polygon
+        className="grid-tile"
+        data-pos={
+          Array [
+            1,
+            0,
+          ]
+        }
+        points="240,46.122801960219086 320,92.24560392043817 240,138.36840588065726 160,92.24560392043817"
+      />
+      <polygon
+        className="grid-tile"
+        data-pos={
+          Array [
+            1,
+            1,
+          ]
+        }
+        points="320,92.24560392043817 400,138.36840588065726 320,184.49120784087634 240,138.36840588065726"
+      />
+      <polygon
+        className="grid-tile"
+        data-pos={
+          Array [
+            1,
+            2,
+          ]
+        }
+        points="400,138.36840588065726 480,184.49120784087634 400,230.61400980109545 320,184.49120784087634"
+      />
+      <polygon
+        className="grid-tile"
+        data-pos={
+          Array [
+            1,
+            3,
+          ]
+        }
+        points="480,184.49120784087634 560,230.61400980109542 480,276.7368117613145 400,230.61400980109542"
+      />
+      <polygon
+        className="grid-tile"
+        data-pos={
+          Array [
+            2,
+            0,
+          ]
+        }
+        points="160,92.24560392043817 240,138.36840588065726 160,184.49120784087634 80,138.36840588065726"
+      />
+      <polygon
+        className="grid-tile"
+        data-pos={
+          Array [
+            2,
+            1,
+          ]
+        }
+        points="240,138.36840588065726 320,184.49120784087634 240,230.61400980109545 160,184.49120784087634"
+      />
+      <polygon
+        className="grid-tile"
+        data-pos={
+          Array [
+            2,
+            2,
+          ]
+        }
+        points="320,184.49120784087634 400,230.61400980109542 320,276.7368117613145 240,230.61400980109542"
+      />
+      <polygon
+        className="grid-tile"
+        data-pos={
+          Array [
+            2,
+            3,
+          ]
+        }
+        points="400,230.61400980109542 480,276.7368117613145 400,322.8596137215336 320,276.7368117613145"
+      />
+      <polygon
+        className="grid-tile"
+        data-pos={
+          Array [
+            3,
+            0,
+          ]
+        }
+        points="80,138.36840588065726 160,184.49120784087634 80,230.61400980109545 0,184.49120784087634"
+      />
+      <polygon
+        className="grid-tile"
+        data-pos={
+          Array [
+            3,
+            1,
+          ]
+        }
+        points="160,184.49120784087634 240,230.61400980109542 160,276.7368117613145 80,230.61400980109542"
+      />
+      <polygon
+        className="grid-tile"
+        data-pos={
+          Array [
+            3,
+            2,
+          ]
+        }
+        points="240,230.61400980109542 320,276.7368117613145 240,322.8596137215336 160,276.7368117613145"
+      />
+      <polygon
+        className="grid-tile"
+        data-pos={
+          Array [
+            3,
+            3,
+          ]
+        }
+        points="320,276.7368117613145 400,322.8596137215336 320,368.9824156817527 240,322.8596137215336"
+      />
+    </svg>
+    <div
+      className="buildings"
+    >
+      <div
+        className="tile"
+        style={
+          Object {
+            "left": 320,
+            "top": 46.122801960219086,
+            "width": 160,
+          }
+        }
+      >
+        <img
+          className="building-tile"
+          src="temple.png"
+        />
+      </div>
+      <div
+        className="tile"
+        style={
+          Object {
+            "left": 480,
+            "top": 138.36840588065726,
+            "width": 160,
+          }
+        }
+      >
+        <img
+          className="building-tile"
+          src="house.png"
+        />
+      </div>
+      <div
+        className="tile"
+        style={
+          Object {
+            "left": 160,
+            "top": 46.122801960219086,
+            "width": 160,
+          }
+        }
+      >
+        <img
+          className="building-tile"
+          src="house.png"
+        />
+      </div>
+      <div
+        className="tile"
+        style={
+          Object {
+            "left": 400,
+            "top": 184.49120784087634,
+            "width": 160,
+          }
+        }
+      >
+        <img
+          className="building-tile"
+          src="house.png"
+        />
+      </div>
+      <div
+        className="tile"
+        style={
+          Object {
+            "left": 240,
+            "top": 184.49120784087634,
+            "width": 160,
+          }
+        }
+      >
+        <img
+          className="building-tile"
+          src="solar.png"
+        />
+      </div>
+      <div
+        className="tile"
+        style={
+          Object {
+            "left": 80,
+            "top": 184.49120784087634,
+            "width": 160,
+          }
+        }
+      >
+        <img
+          className="building-tile"
+          src="factory.png"
+        />
+      </div>
+    </div>
+    <svg
+      className="grid"
+      height={368.9824156817527}
+      width={640}
+    >
+      <g>
+        <path
+          className="powerline"
+          d="M 320,230.61400980109542 Q 360,72.24560392043817 400,92.24560392043817"
+        />
+        <path
+          className="powerflow"
+          d="M 320,230.61400980109542 Q 360,72.24560392043817 400,92.24560392043817"
+        />
+      </g>
+      <g>
+        <path
+          className="powerline"
+          d="M 320,230.61400980109542 Q 440,164.49120784087634 560,184.49120784087634"
+        />
+        <path
+          className="powerflow"
+          d="M 320,230.61400980109542 Q 440,164.49120784087634 560,184.49120784087634"
+        />
+      </g>
+      <g>
+        <path
+          className="powerline"
+          d="M 320,230.61400980109542 Q 280,72.24560392043817 240,92.24560392043817"
+        />
+        <path
+          className="powerflow"
+          d="M 320,230.61400980109542 Q 280,72.24560392043817 240,92.24560392043817"
+        />
+      </g>
+      <g>
+        <path
+          className="powerline"
+          d="M 320,230.61400980109542 Q 400,210.61400980109542 480,230.61400980109542"
+        />
+        <path
+          className="powerflow"
+          d="M 320,230.61400980109542 Q 400,210.61400980109542 480,230.61400980109542"
+        />
+      </g>
+      <g>
+        <path
+          className="powerline"
+          d="M 320,230.61400980109542 Q 240,210.61400980109542 160,230.61400980109542"
+        />
+        <path
+          className="powerflow"
+          d="M 320,230.61400980109542 Q 240,210.61400980109542 160,230.61400980109542"
+        />
+      </g>
+    </svg>
+    <div
+      className="markers"
+    >
+      <div
+        className="tile"
+        style={
+          Object {
+            "height": 92.24560392043817,
+            "left": 320,
+            "top": 46.122801960219086,
+            "width": 160,
+          }
+        }
+      >
+        <div
+          className="marker-tile"
+        >
+          <div
+            className="dot-background"
+          />
+          <div
+            className="dot"
+            onClick={[Function]}
+          />
+        </div>
+      </div>
+      <div
+        className="tile"
+        style={
+          Object {
+            "height": 92.24560392043817,
+            "left": 480,
+            "top": 138.36840588065726,
+            "width": 160,
+          }
+        }
+      >
+        <div
+          className="marker-tile"
+        >
+          <div
+            className="dot-background"
+          />
+          <div
+            className="dot"
+            onClick={[Function]}
+          />
+        </div>
+      </div>
+      <div
+        className="tile"
+        style={
+          Object {
+            "height": 92.24560392043817,
+            "left": 160,
+            "top": 46.122801960219086,
+            "width": 160,
+          }
+        }
+      >
+        <div
+          className="marker-tile"
+        >
+          <div
+            className="dot-background"
+          />
+          <div
+            className="dot"
+            onClick={[Function]}
+          />
+        </div>
+      </div>
+      <div
+        className="tile"
+        style={
+          Object {
+            "height": 92.24560392043817,
+            "left": 400,
+            "top": 184.49120784087634,
+            "width": 160,
+          }
+        }
+      >
+        <div
+          className="marker-tile"
+        >
+          <div
+            className="dot-background"
+          />
+          <div
+            className="dot"
+            onClick={[Function]}
+          />
+        </div>
+      </div>
+      <div
+        className="tile"
+        style={
+          Object {
+            "height": 92.24560392043817,
+            "left": 240,
+            "top": 184.49120784087634,
+            "width": 160,
+          }
+        }
+      >
+        <div
+          className="marker-tile"
+        >
+          <div
+            className="dot-background"
+          />
+          <div
+            className="dot"
+            onClick={[Function]}
+          />
+        </div>
+      </div>
+      <div
+        className="tile"
+        style={
+          Object {
+            "height": 92.24560392043817,
+            "left": 80,
+            "top": 184.49120784087634,
+            "width": 160,
+          }
+        }
+      >
+        <div
+          className="marker-tile"
+        >
+          <div
+            className="dot-background"
+          />
+          <div
+            className="dot"
+            onClick={[Function]}
+          />
+        </div>
+      </div>
+      <div
+        className="marker-content"
+        style={
+          Object {
+            "left": 0,
+            "top": 0,
+          }
+        }
+      >
+        content
+      </div>
+    </div>
+  </div>
+</div>
+`;

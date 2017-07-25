@@ -55,6 +55,24 @@
   animation: pulse 3s 2s infinite;
 }
 
+.marker-content {
+  position: fixed;
+  border-radius: 50%;
+  width: 300px;
+  height: 300px;
+  transform-origin: 50% 50%;
+  transform: scale(0);
+}
+
+.marker-content.open {
+  transform-origin: 50% 50%;
+  display: block;
+  background: gray;
+  padding: 100px;
+  transform: scale(1);
+  transition: all .3s ease-in;
+}
+
 .building-tile {
   transform: translateY(-50%);
   width: 100%;
