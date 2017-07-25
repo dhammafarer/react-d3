@@ -1,34 +1,21 @@
 import React from 'react';
-import { getSolarIrradiance } from '../../api/solar.js';
-import { TimelineMax } from 'gsap';
-import MicrogridChart from './chart/MicrogridChart.js';
 import MicrogridGraphic from './graphic/MicrogridGraphic.js';
-import ChartControls from './chart/ChartControls.js';
+import * as systems from '../../data/microgrid-systems.js';
 
 class MicrogridApp extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      data: [],
-      timeline: new TimelineMax({paused: true, onUpdate: this.updateSlider.bind(this)}),
-      progress: 0
+      systems,
+      activeId: 'fushan'
     };
-    this.handleRangeChange = this.handleRangeChange.bind(this);
-  }
-
-  handleRangeChange (e) {
-    this.state.timeline.pause();
-    this.setState({progress: e.target.value});
-    this.state.timeline.progress(e.target.value / 100);
-  }
-
-  updateSlider () {
-    this.setState({progress: this.state.timeline.progress() * 100});
   }
 
   componentDidMount () {
-    getSolarIrradiance('2010-06-01')
-      .then(csv => this.setState({data: csv}));
+  }
+
+  activeSystem () {
+    return this.state.systems[this.state.activeId];
   }
 
   render () {
@@ -37,19 +24,7 @@ class MicrogridApp extends React.Component {
 
         <div className="columns">
           <div className="column">
-            <MicrogridGraphic {...this.state}/>
-          </div>
-        </div>
-
-        <div className="columns">
-          <div className="column is-half">
-            <MicrogridChart {...this.state}/>
-          </div>
-        </div>
-
-        <div className="columns">
-          <div className="column">
-            <ChartControls tl={this.state.timeline} progress={this.state.progress} handleRangeChange={this.handleRangeChange}/>
+            <MicrogridGraphic {...this.activeSystem()}/>
           </div>
         </div>
 

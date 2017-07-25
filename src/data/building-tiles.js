@@ -1,29 +1,8 @@
 const tiles = {
-  grid: require('../assets/0.png'),
-  grass: require('../assets/grass.png'),
-  stone: require('../assets/stone.png'),
   temple: require('../assets/temple.png'),
   factory: require('../assets/factory.png'),
   solar: require('../assets/solar.png'),
   house: require('../assets/house.png')
-};
-
-export const grid = {
-  name: 'grid',
-  src: tiles.grid,
-  height: 1
-};
-
-export const grass = {
-  name: 'grass',
-  src: tiles.grass,
-  height: 1
-};
-
-export const stone = {
-  name: 'stone',
-  src: tiles.stone,
-  height: 1
 };
 
 export const temple = {

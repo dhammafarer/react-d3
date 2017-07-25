@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './MicrogridGraphic.scss';
 import { isometricTileCoords, isometricTilePolygonPoints } from '../../../helpers/isometric-grid.js';
-import * as o from '../../../data/microgrid-objects.js';
 import GroundTiles from './GroundTiles.js';
 import BuildingTiles from './BuildingTiles.js';
 import IsometricGrid from './IsometricGrid.js';
@@ -20,24 +19,10 @@ class MicrogridGraphic extends React.Component {
         height: 400 * tileRatio,
         margin: [0, 0]
       },
-      gridSize: [4, 4],
       tile: {
         width: 200,
         height: 200 * tileRatio
-      },
-      groundMap: [
-        [o.grass, o.grass, o.grass, o.grass],
-        [o.grass, o.grass, o.grass, o.grass],
-        [o.grass, o.grass, o.grass, o.grass],
-        [o.stone, o.stone, o.grass, o.grass]
-
-      ],
-      buildingsMap: [
-        [null, o.temple, null, o.house],
-        [o.house, null, null, o.house],
-        [null, null, o.solar, null],
-        [null, o.factory, null, null]
-      ]
+      }
     };
   }
   componentDidMount () {
@@ -46,11 +31,11 @@ class MicrogridGraphic extends React.Component {
 
   setGraphicSize () {
     let componentWidth = this.graphic.offsetWidth;
-    let tileWidth = componentWidth / (this.state.gridSize[1] + 1);
+    let tileWidth = componentWidth / (this.props.gridSize[1] + 1);
     let tileHeight = tileWidth / tileRatio;
     let margin = [tileHeight / 2, tileWidth / 2];
     let width = componentWidth - margin[1] * 2;
-    let height = tileHeight * (this.state.gridSize[1]);
+    let height = tileHeight * (this.props.gridSize[1]);
     this.setState({
       size: {width, height, margin},
       tile: {width: tileWidth, height: tileHeight}
@@ -75,7 +60,7 @@ class MicrogridGraphic extends React.Component {
 
   tileCoords () {
     let {width, height} = this.state.tile;
-    return isometricTileCoords(this.state.gridSize, [width, height]);
+    return isometricTileCoords(this.props.gridSize, [width, height]);
   }
 
   tilePolygons () {
@@ -96,8 +81,8 @@ class MicrogridGraphic extends React.Component {
       margin: margin[0] + 'px ' + margin[1] + 'px'
     };
 
-    let ground = this.mapToIso(this.state.groundMap);
-    let buildings = this.mapToIso(this.state.buildingsMap).filter(el => el.tile);
+    let ground = this.mapToIso(this.props.terrainMap);
+    let buildings = this.mapToIso(this.props.buildingsMap).filter(el => el.tile);
     let grid = this.tilePolygons();
 
     return (
@@ -117,7 +102,10 @@ class MicrogridGraphic extends React.Component {
 }
 
 MicrogridGraphic.propTypes = {
-  timeline: PropTypes.object
+  id: PropTypes.string.isRequired,
+  gridSize: PropTypes.array.isRequired,
+  terrainMap: PropTypes.array.isRequired,
+  buildingsMap: PropTypes.array.isRequired
 };
 
 export default MicrogridGraphic;
