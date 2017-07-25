@@ -1,13 +1,13 @@
 const DEFAULT_GRID = [3, 3];
 const DEFAULT_TERRAIN = createGrid(DEFAULT_GRID);
-const DEFAULT_BUILDINGS = createGrid(DEFAULT_GRID);
+const DEFAULT_BUILDINGS = [];
 
-export function createSystem ({name, gridSize = DEFAULT_GRID, terrainMap = DEFAULT_TERRAIN, buildingsMap = DEFAULT_BUILDINGS}) {
+export function createSystem ({name, gridSize = DEFAULT_GRID, terrainMap = DEFAULT_TERRAIN, buildings = DEFAULT_BUILDINGS}) {
   return {
     name,
     gridSize,
     terrainMap,
-    buildingsMap
+    buildings
   };
 }
 

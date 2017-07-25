@@ -64,6 +64,20 @@ class MicrogridGraphic extends React.Component {
       .reduce((a, b) => a.concat(b), []);
   }
 
+  arrayToIso (array) {
+    return array.map(el => {
+      /* eslint-disable no-console */
+      let coords = this.tileCoords()[el.pos[0]][el.pos[1]];
+      let style = {
+        left: coords.x,
+        top: coords.y,
+        width: this.state.tile.width
+      };
+      el.style = style;
+      return el;
+    });
+  }
+
   tileCoords () {
     let {width, height} = this.state.tile;
     return isometricTileCoords(this.props.gridSize, [width, height]);
@@ -88,7 +102,7 @@ class MicrogridGraphic extends React.Component {
     };
 
     let ground = this.mapToIso(this.props.terrainMap).filter(el => el.tile);
-    let buildings = this.mapToIso(this.props.buildingsMap).filter(el => el.tile);
+    let buildings = this.arrayToIso(this.props.buildings);
     let grid = this.tilePolygons();
 
     return (
@@ -112,7 +126,7 @@ MicrogridGraphic.propTypes = {
   name: PropTypes.string.isRequired,
   gridSize: PropTypes.array.isRequired,
   terrainMap: PropTypes.array.isRequired,
-  buildingsMap: PropTypes.array.isRequired
+  buildings: PropTypes.array.isRequired
 };
 
 export default MicrogridGraphic;

@@ -11,11 +11,11 @@ export const fushan =  createSystem({
     [grass, grass, grass, grass],
     [stone, stone, grass, grass]
   ],
-  buildingsMap: [
-    [null, temple, null, null],
-    [house, null, null, house],
-    [null, null, solar, null],
-    [null, factory, null, null]
+  buildings: [
+    {tile: temple, data: null, pos: [0, 2]},
+    {tile: solar, data: null, pos: [1, 0]},
+    {tile: factory, data: null, pos: [3, 1]},
+    {tile: house, data: null, pos: [3, 3]}
   ]
 });
 
@@ -27,10 +27,10 @@ export const qimei = createSystem({
     [grass, grass, grass],
     [grass, grass, grass]
   ],
-  buildingsMap: [
-    [null, null, house],
-    [temple, null, null],
-    [null, solar, null]
+  buildings: [
+    {tile: temple, data: null, pos: [0, 2]},
+    {tile: solar, data: null, pos: [1, 0]},
+    {tile: house, data: null, pos: [2,2]}
   ]
 });
 
