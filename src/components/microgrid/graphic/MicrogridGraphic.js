@@ -26,6 +26,7 @@ class MicrogridGraphic extends React.Component {
     };
   }
   componentDidMount () {
+    window.addEventListener('resize', () => this.setGraphicSize());
     this.setGraphicSize();
   }
 
@@ -92,6 +93,7 @@ class MicrogridGraphic extends React.Component {
 
     return (
       <div className="system-graphic" ref={graphic => this.graphic = graphic}>
+        <h2>{this.props.name}</h2>
         <div className="graphic-content" style={graphicStyles}>
 
           <GroundTiles ground={ground}/>
@@ -107,7 +109,7 @@ class MicrogridGraphic extends React.Component {
 }
 
 MicrogridGraphic.propTypes = {
-  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
   gridSize: PropTypes.array.isRequired,
   terrainMap: PropTypes.array.isRequired,
   buildingsMap: PropTypes.array.isRequired

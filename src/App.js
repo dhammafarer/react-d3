@@ -7,11 +7,7 @@ import './App.css';
 class App extends Component {
   render() {
     return (
-      <div className="section">
-        <div className="container">
-          <MicrogridApp />
-        </div>
-      </div>
+      <MicrogridApp />
     );
   }
 }

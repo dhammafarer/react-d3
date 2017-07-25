@@ -3,7 +3,7 @@ import { grass, stone } from './terrain-tiles.js';
 import { temple, solar, house, factory } from './building-tiles.js';
 
 export const fushan =  createSystem({
-  id: 'fushan',
+  name: 'Fushan Microgrid',
   gridSize: [4, 4],
   terrainMap: [
     [grass, grass, grass, grass],
@@ -20,6 +20,17 @@ export const fushan =  createSystem({
 });
 
 export const qimei = createSystem({
-  id: 'qimei'
+  name: 'Qimei Microgrid',
+  gridSize: [3, 3],
+  terrainMap: [
+    [grass, grass, grass],
+    [grass, grass, grass],
+    [grass, grass, grass]
+  ],
+  buildingsMap: [
+    [null, null, house],
+    [temple, null, null],
+    [null, solar, null]
+  ]
 });
 

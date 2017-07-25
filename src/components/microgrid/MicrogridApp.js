@@ -1,5 +1,7 @@
 import React from 'react';
 import MicrogridGraphic from './graphic/MicrogridGraphic.js';
+import Navigation from './ui/Navigation.js';
+import ControlPanel from './ui/ControlPanel.js';
 import { fushan, qimei } from '../../data/microgrid-systems.js';
 
 class MicrogridApp extends React.Component {
@@ -7,19 +9,17 @@ class MicrogridApp extends React.Component {
     super(props);
     this.state = {
       systems: [fushan, qimei],
-      activeId: 0
+      activeIdx: 0
     };
-  }
-
-  componentDidMount () {
+    this.setActiveSystem = this.setActiveSystem.bind(this);
   }
 
   activeSystem () {
-    return this.state.systems[this.state.activeId];
+    return this.state.systems[this.state.activeIdx];
   }
 
   setActiveSystem (i) {
-    this.setState({activeId: i});
+    this.setState({activeIdx: i});
   }
 
   render () {
@@ -28,23 +28,28 @@ class MicrogridApp extends React.Component {
     return (
       <div id="microgrid-app">
 
+        <Navigation />
+
         <div className="columns">
-          <div className="column is-one-quarter">
-            <div>
-              {this.state.systems.map((el, i) =>
-                <button className="button"
-                  onClick={() => this.setActiveSystem(i)}
-                  key={el.id}>
-                  {el.id}
-                </button>
-              )}
+          <aside className="column is-2-desktop is-3-tablet is-hidden-mobile hero is-fullheight">
+            <ControlPanel {...this.state}
+              setActiveSystem={this.setActiveSystem}/>
+          </aside>
+
+          <main className="column">
+            <article className="container">
+              <MicrogridGraphic {...activeSystem}/>
+            </article>
+          </main>
+        </div>
+
+        <footer className="footer">
+          <div className="container">
+            <div className="content has-text-centered">
+              microgrid app
             </div>
           </div>
-
-          <div className="column is-three-quarter">
-            <MicrogridGraphic {...activeSystem}/>
-          </div>
-        </div>
+        </footer>
 
       </div>
     );
