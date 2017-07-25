@@ -29,6 +29,11 @@ class MicrogridGraphic extends React.Component {
     this.setGraphicSize();
   }
 
+  componentDidUpdate (prevProps) {
+    if (prevProps.gridSize != this.props.gridSize) {
+      this.setGraphicSize();
+    }
+  }
   setGraphicSize () {
     let componentWidth = this.graphic.offsetWidth;
     let tileWidth = componentWidth / (this.props.gridSize[1] + 1);
