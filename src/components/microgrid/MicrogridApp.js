@@ -1,9 +1,9 @@
 import React from 'react';
 import MicrogridGraphic from './graphic/MicrogridGraphic.js';
-import Navigation from './ui/Navigation.js';
 import GraphicModal from './graphic/GraphicModal.js';
 import ControlPanel from './ui/ControlPanel.js';
 import { fushan, qimei } from '../../data/microgrid-systems.js';
+import './MicrogridApp.scss';
 
 class MicrogridApp extends React.Component {
   constructor (props) {
@@ -49,36 +49,44 @@ class MicrogridApp extends React.Component {
     let activeSystem = this.activeSystem();
 
     return (
-      <div id="microgrid-app">
-
-        <Navigation />
+      <div className="microgrid-app">
 
         <GraphicModal data={this.state.graphicModalContent}
           showModal={this.state.showGraphicModal}
           position={this.state.graphicModalPosition}
           closeModal={this.closeGraphicModal}/>
 
-        <div className="columns">
-          <aside className="column is-2-desktop is-3-tablet is-hidden-mobile hero is-fullheight">
-            <ControlPanel {...this.state}
-              setActiveSystem={this.setActiveSystem}/>
-          </aside>
+        <div className="split-pane-vertical">
 
-          <main className="column">
-            <article className="container">
-              <MicrogridGraphic {...activeSystem} openGraphicModal={this.openGraphicModal}/>
-            </article>
-          </main>
-        </div>
 
-        <footer className="footer">
-          <div className="container">
-            <div className="content has-text-centered">
-              microgrid app
+          <div className="pane-vertical panel">
+            <div className="controls">
+              <ControlPanel {...this.state}
+                setActiveSystem={this.setActiveSystem}/>
             </div>
           </div>
-        </footer>
 
+          <div className="pane-vertical pane2">
+            <div className="split-pane-horizontal">
+
+              <div className="pane-horizontal">
+                <div className="horizontal-panel">
+                  <div className="horizontal-panel-content">
+                    <MicrogridGraphic {...activeSystem} openGraphicModal={this.openGraphicModal}/>
+                  </div>
+                </div>
+              </div>
+
+              <div className="pane-horizontal bottom">
+                <div className="horizontal-panel">
+                  <div className="horizontal-panel-content">
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
