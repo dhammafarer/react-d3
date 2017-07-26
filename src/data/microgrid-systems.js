@@ -1,6 +1,6 @@
 import { createSystem } from '../helpers/system-factory.js';
 import { grass, stone } from './terrain-tiles.js';
-import { temple, solar, house, factory } from './building-tiles.js';
+import { network, temple, solar, house, factory } from './building-tiles.js';
 
 export const fushan =  createSystem({
   name: 'Fushan Microgrid',
@@ -12,8 +12,9 @@ export const fushan =  createSystem({
     [stone, stone, grass, grass]
   ],
   buildings: [
-    {name: 'Temple', tile: temple, data: null, pos: [0, 2]},
+    {name: 'Power Grid', tile: network, data: null, pos: [1, 1]},
     {name: 'PV Farm', tile: solar, data: null, pos: [1, 0]},
+    {name: 'Temple', tile: temple, data: null, pos: [0, 2]},
     {name: 'Factory', tile: factory, data: null, pos: [3, 1]},
     {name: 'House', tile: house, data: null, pos: [3, 3]}
   ]
