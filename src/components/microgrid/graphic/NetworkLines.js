@@ -30,9 +30,10 @@ function NetworkLines ({data, width, height, tile}) {
 
   if (consumers.length && distributor && generators.length) {
     genLines = generators
-      .map(({style}) => [
+      .map(({style, data}) => [
         {x: style.left + offsetWidth, y: style.top + offsetHeight},
-        {x: distributor.style.left + offsetWidth, y: distributor.style.top + offsetHeight}
+        {x: distributor.style.left + offsetWidth, y: distributor.style.top + offsetHeight},
+        data
       ]);
   }
 
@@ -50,7 +51,7 @@ function NetworkLines ({data, width, height, tile}) {
       {genLines.map((con, i) =>
         <g key={i} >
           <path d={link(con)} className="powerline generation"/>
-          {activeGens && <path d={link(con)} className="powerflow"/>}
+          {con[2].active && <path d={link(con)} className="powerflow"/>}
         </g>
       )}
     </svg>

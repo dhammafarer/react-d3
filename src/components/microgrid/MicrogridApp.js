@@ -2,6 +2,7 @@ import React from 'react';
 import MicrogridGraphic from './graphic/MicrogridGraphic.js';
 import GraphicModal from './graphic/GraphicModal.js';
 import ControlPanel from './ui/ControlPanel.js';
+import SystemSettings from './ui/SystemSettings.js';
 import { fushan, qimei } from '../../data/microgrid-systems.js';
 import './MicrogridApp.scss';
 
@@ -18,6 +19,7 @@ class MicrogridApp extends React.Component {
     this.setActiveSystem = this.setActiveSystem.bind(this);
     this.openGraphicModal = this.openGraphicModal.bind(this);
     this.closeGraphicModal = this.closeGraphicModal.bind(this);
+    this.toggleBuildingState = this.toggleBuildingState.bind(this);
   }
 
   activeSystem () {
@@ -26,6 +28,20 @@ class MicrogridApp extends React.Component {
 
   setActiveSystem (i) {
     this.setState({activeIdx: i});
+  }
+
+  toggleBuildingState (idx) {
+    let systems = this.state.systems
+      .map((s, i) => {
+        if (i == this.state.activeIdx) s.buildings.map((b, i) => {
+          if (i == idx) b.data.active = !b.data.active;
+          return b;
+        });
+        return s;
+      }
+    );
+
+    this.setState({systems});
   }
 
   openGraphicModal (e, data) {
@@ -60,9 +76,21 @@ class MicrogridApp extends React.Component {
 
 
           <div className="pane-vertical panel">
-            <div className="controls">
-              <ControlPanel {...this.state}
-                setActiveSystem={this.setActiveSystem}/>
+            <div className="split-pane-horizontal">
+              <div className="controls">
+                <div className="panel-horizontal">
+                  <ControlPanel {...this.state}
+                    setActiveSystem={this.setActiveSystem}/>
+                </div>
+              </div>
+              <hr />
+
+              <div className="controls">
+                <div className="panel-horizontal">
+                  <SystemSettings {...this.state}
+                    toggleBuildingState={this.toggleBuildingState}/>
+                </div>
+              </div>
             </div>
           </div>
 

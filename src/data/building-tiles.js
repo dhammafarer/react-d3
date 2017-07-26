@@ -1,8 +1,9 @@
 const tiles = {
   network: require('../assets/network.png'),
+  gasification: require('../assets/gasification.png'),
+  solar: require('../assets/solar.png'),
   temple: require('../assets/temple.png'),
   factory: require('../assets/factory.png'),
-  solar: require('../assets/solar.png'),
   house: require('../assets/house.png')
 };
 
@@ -23,6 +24,13 @@ export const factory = {
 export const solar = {
   name: 'solar',
   src: tiles.solar,
+  height: 2,
+  type: 'generator'
+};
+
+export const gasification = {
+  name: 'gasification',
+  src: tiles.gasification,
   height: 2,
   type: 'generator'
 };
