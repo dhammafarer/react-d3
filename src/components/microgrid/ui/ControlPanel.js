@@ -12,11 +12,12 @@ function ControlPanel ({systems, setActiveSystem}) {
     <div className="control-panel menu">
       <h3>Control Panel</h3>
       {systems.map((el, i) =>
-        <button className="button"
-          key={i}
-          onClick={() => setActiveSystem(i)}>
-          {el.name}
-        </button>
+        <div key={i}>
+          <button className="button"
+            onClick={() => setActiveSystem(i)}>
+            {el.name}
+          </button>
+        </div>
       )}
     </div>
   );

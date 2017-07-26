@@ -114,7 +114,7 @@ class MicrogridGraphic extends React.Component {
           <IsometricGrid grid={grid} width={width} height={height}/>
           <BuildingTiles buildings={buildings}/>
           <NetworkLines data={buildings} tile={this.state.tile} width={width} height={height}/>
-          <BuildingMarkers data={buildings} height={this.state.tile.height}/>
+          <BuildingMarkers data={buildings} height={this.state.tile.height} handleClick={this.props.openGraphicModal}/>
 
         </div>
       </div>
@@ -126,7 +126,9 @@ MicrogridGraphic.propTypes = {
   name: PropTypes.string.isRequired,
   gridSize: PropTypes.array.isRequired,
   terrainMap: PropTypes.array.isRequired,
-  buildings: PropTypes.array.isRequired
+  buildings: PropTypes.array.isRequired,
+  openGraphicModal: PropTypes.func.isRequired
+
 };
 
 export default MicrogridGraphic;
