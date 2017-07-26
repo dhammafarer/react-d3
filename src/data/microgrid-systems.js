@@ -29,6 +29,7 @@ export const qimei = createSystem({
     [grass, grass, grass]
   ],
   buildings: [
+    {name: 'Power Grid', tile: network, data: null, pos: [1, 1]},
     {name: 'Temple', tile: temple, data: null, pos: [0, 2]},
     {name: 'PV Farm', tile: solar, data: null, pos: [1, 0]},
     {name: 'House', tile: house, data: null, pos: [2,2]}

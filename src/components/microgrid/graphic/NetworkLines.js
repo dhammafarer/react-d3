@@ -10,26 +10,44 @@ NetworkLines.propTypes = {
 };
 
 function NetworkLines ({data, width, height, tile}) {
-  let cons = [];
-  let producer = data.find(el => el.tile.name == 'solar');
+  let distLines = [];
+  let genLines = [];
+  let distributor = data.find(el => el.tile.type == 'distributor');
+  let generators = data.filter(el => el.tile.type == 'generator');
 
-  if (producer) {
-    let users = data.filter(el => el.tile.name != 'solar');
-    let offsetWidth = tile.width / 2;
-    let offsetHeight = tile.height / 2;
+  let consumers = data.filter(el => el.tile.type == 'consumer');
+  let offsetWidth = tile.width / 2;
+  let offsetHeight = tile.height / 2;
 
-    cons = users
+  if (consumers.length && distributor) {
+
+    distLines = consumers
       .map(({style}) => [
-        {x: producer.style.left + offsetWidth, y: producer.style.top + offsetHeight},
+        {x: distributor.style.left + offsetWidth, y: distributor.style.top + offsetHeight},
         {x: style.left + offsetWidth, y: style.top + offsetHeight}
+      ]);
+  }
+
+  if (consumers.length && distributor && generators.length) {
+    genLines = generators
+      .map(({style}) => [
+        {x: style.left + offsetWidth, y: style.top + offsetHeight},
+        {x: distributor.style.left + offsetWidth, y: distributor.style.top + offsetHeight}
       ]);
   }
 
   return (
     <svg className="grid" width={width} height={height}>
-      {cons.map((con, i) =>
+      {distLines.map((con, i) =>
         <g key={i} >
-          <path d={link(con)} className="powerline"/>
+          <path d={link(con)} className="powerline distribution"/>
+          {generators.length && <path d={link(con)} className="powerflow"/>}
+        </g>
+      )}
+
+      {genLines.map((con, i) =>
+        <g key={i} >
+          <path d={link(con)} className="powerline generation"/>
           <path d={link(con)} className="powerflow"/>
         </g>
       )}
