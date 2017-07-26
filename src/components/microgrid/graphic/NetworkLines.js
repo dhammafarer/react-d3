@@ -36,19 +36,21 @@ function NetworkLines ({data, width, height, tile}) {
       ]);
   }
 
+  let activeGens = generators.some(el => el.data.active);
+
   return (
     <svg className="grid" width={width} height={height}>
       {distLines.map((con, i) =>
         <g key={i} >
           <path d={link(con)} className="powerline distribution"/>
-          {generators.length && <path d={link(con)} className="powerflow"/>}
+          {activeGens && <path d={link(con)} className="powerflow"/>}
         </g>
       )}
 
       {genLines.map((con, i) =>
         <g key={i} >
           <path d={link(con)} className="powerline generation"/>
-          <path d={link(con)} className="powerflow"/>
+          {activeGens && <path d={link(con)} className="powerflow"/>}
         </g>
       )}
     </svg>
