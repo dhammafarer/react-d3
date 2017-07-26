@@ -30,11 +30,11 @@ class MicrogridApp extends React.Component {
 
   openGraphicModal (e, data) {
     /* eslint-disable no-console */
-    let event = e.nativeEvent;
+    let {left, top} = e.target.getBoundingClientRect();
     this.setState({
       showGraphicModal: true,
       graphicModalContent: data,
-      graphicModalPosition: [event.pageX, event.pageY]
+      graphicModalPosition: [left, top]
     });
   }
 

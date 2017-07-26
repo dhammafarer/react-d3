@@ -6,31 +6,44 @@ import { TimelineMax } from 'gsap';
 /* eslint-disable no-console */
 
 class GraphicModal extends React.Component {
+  constructor (props) {
+    super(props);
+    this.onEnter = this.onEnter.bind(this);
+    this.onExit = this.onExit.bind(this);
+    this.tl = new TimelineMax();
+  }
+
   onEnter (node) {
     const content = node.querySelector('.graphic-modal-content');
     const background = node.querySelector('.graphic-modal-background');
+    const frame = node.querySelector('.graphic-modal-frame');
     const ripple = node.querySelector('.ripple');
 
-    new TimelineMax({onComplete: this.end})
-      .set(node, {display: 'block'})
-      .to(ripple, 0.5, {transform: 'scale(2)'})
+    this.tl
+      .set(node, {display: 'block'});
+    let {left, top} = frame.getBoundingClientRect();
+    let [x, y] = this.props.position;
+    this.tl
+      .set(ripple, {left: x - left, top: y - top})
+      .to(ripple, 0.5, {transform: 'scale(50)', ease: 'Cubic.easeIn'})
       .to(background, 0.3, {opacity: 1}, "-=0.2")
       .from(content, 0.5, {y: "-=10", opacity: 0})
     ;
   }
 
-  onExiting (node) {
+  onExit (node) {
     let content = node.querySelector('.graphic-modal-content');
     let ripple = node.querySelector('.ripple');
     const background = node.querySelector('.graphic-modal-background');
-    new TimelineMax({onComplete: this.end})
+    this.tl
       .to(ripple, 0.3, {transform: 'scale(0)'})
-      .to(background, 0.3, {opacity: 0}, "-=0.1")
+      .to(background, 0.3, {opacity: 0}, "-=0.3")
       .set(node, {display: 'none'});
   }
 
   end (done) {
-    done();
+    console.log(done);
+    return done();
   }
 
   render () {
@@ -38,8 +51,8 @@ class GraphicModal extends React.Component {
     return (
       <Transition in={showModal}
         onEnter={this.onEnter}
-        onExiting={this.onExiting}
-        addEndListener={(node, done) => this.end(done)}
+        onExit={this.onExit}
+        addEndListener={(node, done) => this.tl.eventCallback('onComplete', done)}
         timeout={300}>
         <div className="graphic-modal">
           <div className="graphic-modal-background" onClick={() => closeModal()}></div>
