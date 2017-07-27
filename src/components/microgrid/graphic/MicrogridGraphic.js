@@ -7,6 +7,7 @@ import BuildingTiles from './BuildingTiles.js';
 import IsometricGrid from './IsometricGrid.js';
 import NetworkLines from './NetworkLines.js';
 import BuildingMarkers from './BuildingMarkers.js';
+import { TimelineMax } from 'gsap';
 
 const tileRatio = 1.7345;
 
@@ -22,19 +23,36 @@ class MicrogridGraphic extends React.Component {
       tile: {
         width: 200,
         height: 200 * tileRatio
-      }
+      },
+      tl: new TimelineMax()
     };
   }
   componentDidMount () {
     window.addEventListener('resize', () => this.setGraphicSize());
     this.setGraphicSize();
+    this.animateEnter();
   }
 
   componentDidUpdate (prevProps) {
     if (prevProps.gridSize != this.props.gridSize) {
       this.setGraphicSize();
     }
+    if (prevProps.name != this.props.name) {
+      this.animateEnter();
+    }
   }
+
+  animateEnter () {
+    this.state.tl
+      .clear()
+      .from('.ground-tile', 0.5, {opacity: 0.8, transform: 'scale(0.0)', y: '+=2', ease: 'Cubic.easeOut'}, 0.1)
+      .from('.grid', 0.3, {opacity: 0})
+      .staggerFrom('.building-tile', 0.3, {opacity: 0}, 0.2)
+      .from(['.marker-tile'], 0.5, {transform: 'scale(0)', opacity: 0}, '-=0.1')
+      .from('.powerline', 0.5, {opacity: 0}, "-=0.3")
+      .from('.powerflow', 0.5, {opacity: 0}, "+=0.3");
+  }
+
   setGraphicSize () {
     let componentWidth = this.graphic.offsetWidth;
     let tileWidth = componentWidth / (this.props.gridSize[1] + 1);
