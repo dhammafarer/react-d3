@@ -66,16 +66,16 @@ class MicrogridGraphic extends React.Component {
     });
   }
 
-  mapToIso (objectsMap) {
+  mapToIso (isotable, tile, objectsMap) {
     return objectsMap
       .map((row, y) => row
         .map((texture, x) => {
-          let coords = this.tileCoords()[y][x];
+          let coords = isotable[y][x];
           let style = {
             left: coords.x,
             top: coords.y,
-            width: this.state.tile.width,
-            height: this.state.tile.height * (1 + Math.abs(texture.offsetHeight))
+            width: tile.width,
+            height: tile.height * texture.height
           };
           return {texture, pos: [x, y], style};
         })
@@ -83,30 +83,29 @@ class MicrogridGraphic extends React.Component {
       .reduce((a, b) => a.concat(b), []);
   }
 
-  arrayToIso (array) {
+  arrayToIso (isotable, tile, array) {
     return array.map(el => {
-      /* eslint-disable no-console */
-      let coords = this.tileCoords()[el.pos[0]][el.pos[1]];
+      let coords = isotable[el.pos[0]][el.pos[1]];
       let style = {
         left: coords.x,
-        top: coords.y - (this.state.tile.height * el.texture.offsetHeight),
-        width: this.state.tile.width,
-        height: this.state.tile.height * Math.abs(1 + el.texture.offsetHeight)
+        top: coords.y - (tile.height * el.texture.offsetHeight),
+        width: tile.width,
+        height: tile.height * el.texture.height
       };
       el.style = style;
       return el;
     });
   }
 
-  tileCoords () {
-    let {width, height} = this.state.tile;
-    return isometricTileCoords(this.props.gridSize, [width, height]);
+  tileCoords (gridSize, tile) {
+    let {width, height} = tile;
+    return isometricTileCoords(gridSize, [width, height]);
   }
 
-  tilePolygons () {
-    let {width, height} = this.state.tile;
-    return this.tileCoords()
-      .map((row, y) => row.map((coords, x) => {
+  tilePolygons (isotable, tile) {
+    let {width, height} = tile;
+    return isotable.map((row, y) => row
+      .map((coords, x) => {
         return {
           points: isometricTilePolygonPoints([width, height], coords),
           pos: [y, x]};
@@ -116,23 +115,25 @@ class MicrogridGraphic extends React.Component {
 
   render () {
     let {width, height, margin} = this.state.size;
+    let tile = this.state.tile;
+    let {gridSize, terrainMap, buildings} = this.props;
     let graphicStyles = {
-      width, height,
-      margin: margin[0] + 'px ' + margin[1] + 'px'
+      width, height, margin: margin[0] + 'px ' + margin[1] + 'px'
     };
 
-    let terrain = this.mapToIso(this.props.terrainMap).filter(el => el.texture);
-    let buildings = this.arrayToIso(this.props.buildings);
-    let grid = this.tilePolygons();
+    let isotable = this.tileCoords(gridSize, tile);
+    let terrainLayer = this.mapToIso(isotable, tile, terrainMap).filter(el => el.texture);
+    let buildingsLayer = this.arrayToIso(isotable, tile, buildings);
+    let grid = this.tilePolygons(isotable, tile);
 
     return (
       <div className="system-graphic" ref={graphic => this.graphic = graphic}>
         <h2>{this.props.name}</h2>
         <div className="graphic-content" style={graphicStyles}>
 
-          <TerrainTiles terrain={terrain}/>
+          <TerrainTiles terrain={terrainLayer}/>
           <IsometricGrid grid={grid} width={width} height={height}/>
-          <BuildingTiles buildings={buildings}/>
+          <BuildingTiles buildings={buildingsLayer}/>
           <NetworkLines data={buildings} tile={this.state.tile} width={width} height={height}/>
           <BuildingMarkers data={buildings} handleClick={this.props.openGraphicModal}/>
 

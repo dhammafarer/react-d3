@@ -1,5 +1,5 @@
 import { createSystem } from '../helpers/system-factory.js';
-import { grass, stone } from './terrain-textures.js';
+import { grass, dirt, sand, water } from './terrain-textures.js';
 import { network, gasification, temple, solar, house, factory } from './building-textures.js';
 
 export const fushan =  createSystem({
@@ -9,7 +9,7 @@ export const fushan =  createSystem({
     [grass, grass, grass, grass],
     [grass, grass, grass, grass],
     [grass, grass, grass, grass],
-    [stone, stone, grass, grass]
+    [dirt, dirt, dirt, dirt]
   ],
   buildings: [
     {name: 'Gasification', texture: gasification, data: {active: true}, pos: [1, 0]},
