@@ -10,7 +10,7 @@ function BuildingTiles ({buildings}) {
     <div className="buildings">
       {buildings.map((el, i) =>
         <div key={i} className="tile" style={el.style}>
-          <img className="building-tile" src={el.tile.src}/>
+          <img className="building-tile" src={el.texture.src}/>
         </div>)}
     </div>
   );

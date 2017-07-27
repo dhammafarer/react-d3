@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './MicrogridGraphic.scss';
 import { isometricTileCoords, isometricTilePolygonPoints } from '../../../helpers/isometric-grid.js';
-import GroundTiles from './GroundTiles.js';
+import TerrainTiles from './TerrainTiles.js';
 import BuildingTiles from './BuildingTiles.js';
 import IsometricGrid from './IsometricGrid.js';
 import NetworkLines from './NetworkLines.js';
@@ -45,7 +45,7 @@ class MicrogridGraphic extends React.Component {
   animateEnter () {
     this.state.tl
       .clear()
-      .from('.ground-tile', 0.5, {opacity: 0.8, transform: 'scale(0.0)', y: '+=2', ease: 'Cubic.easeOut'}, 0.1)
+      .from('.terrain-tile', 0.5, {opacity: 0.8, transform: 'scale(0.0)', y: '+=2', ease: 'Cubic.easeOut'}, 0.1)
       .from('.grid', 0.3, {opacity: 0})
       .staggerFrom('.building-tile', 0.3, {opacity: 0}, 0.2)
       .from(['.marker-tile'], 0.5, {transform: 'scale(0)', opacity: 0}, '-=0.1')
@@ -69,14 +69,15 @@ class MicrogridGraphic extends React.Component {
   mapToIso (objectsMap) {
     return objectsMap
       .map((row, y) => row
-        .map((tile, x) => {
+        .map((texture, x) => {
           let coords = this.tileCoords()[y][x];
           let style = {
             left: coords.x,
             top: coords.y,
-            width: this.state.tile.width
+            width: this.state.tile.width,
+            height: this.state.tile.height * (1 + Math.abs(texture.offsetHeight))
           };
-          return {tile, pos: [x, y], style};
+          return {texture, pos: [x, y], style};
         })
       )
       .reduce((a, b) => a.concat(b), []);
@@ -88,8 +89,9 @@ class MicrogridGraphic extends React.Component {
       let coords = this.tileCoords()[el.pos[0]][el.pos[1]];
       let style = {
         left: coords.x,
-        top: coords.y,
-        width: this.state.tile.width
+        top: coords.y - (this.state.tile.height * el.texture.offsetHeight),
+        width: this.state.tile.width,
+        height: this.state.tile.height * Math.abs(1 + el.texture.offsetHeight)
       };
       el.style = style;
       return el;
@@ -119,7 +121,7 @@ class MicrogridGraphic extends React.Component {
       margin: margin[0] + 'px ' + margin[1] + 'px'
     };
 
-    let ground = this.mapToIso(this.props.terrainMap).filter(el => el.tile);
+    let terrain = this.mapToIso(this.props.terrainMap).filter(el => el.texture);
     let buildings = this.arrayToIso(this.props.buildings);
     let grid = this.tilePolygons();
 
@@ -128,11 +130,11 @@ class MicrogridGraphic extends React.Component {
         <h2>{this.props.name}</h2>
         <div className="graphic-content" style={graphicStyles}>
 
-          <GroundTiles ground={ground}/>
+          <TerrainTiles terrain={terrain}/>
           <IsometricGrid grid={grid} width={width} height={height}/>
           <BuildingTiles buildings={buildings}/>
           <NetworkLines data={buildings} tile={this.state.tile} width={width} height={height}/>
-          <BuildingMarkers data={buildings} height={this.state.tile.height} handleClick={this.props.openGraphicModal}/>
+          <BuildingMarkers data={buildings} handleClick={this.props.openGraphicModal}/>
 
         </div>
       </div>

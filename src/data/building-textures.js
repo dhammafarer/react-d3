@@ -1,4 +1,4 @@
-const tiles = {
+const textures = {
   network: require('../assets/network.png'),
   gasification: require('../assets/gasification.png'),
   solar: require('../assets/solar.png'),
@@ -9,42 +9,42 @@ const tiles = {
 
 export const temple = {
   name: 'temple',
-  src: tiles.temple,
-  height: 2,
+  src: textures.temple,
+  offsetHeight: 1,
   type: 'consumer'
 };
 
 export const factory = {
   name: 'factory',
-  src: tiles.factory,
-  height: 2,
+  src: textures.factory,
+  offsetHeight: 1,
   type: 'consumer'
 };
 
 export const solar = {
   name: 'solar',
-  src: tiles.solar,
-  height: 2,
+  src: textures.solar,
+  offsetHeight: 1,
   type: 'generator'
 };
 
 export const gasification = {
   name: 'gasification',
-  src: tiles.gasification,
-  height: 2,
+  src: textures.gasification,
+  offsetHeight: 1,
   type: 'generator'
 };
 
 export const house = {
   name: 'house',
-  src: tiles.house,
-  height: 2,
+  src: textures.house,
+  offsetHeight: 1,
   type: 'consumer'
 };
 
 export const network = {
   name: 'network',
-  src: tiles.network,
-  height: 2,
+  src: textures.network,
+  offsetHeight: 1,
   type: 'distributor'
 };

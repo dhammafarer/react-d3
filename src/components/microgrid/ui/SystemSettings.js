@@ -19,7 +19,7 @@ function SystemSettings ({systems, activeIdx, toggleBuildingState}) {
           {system.buildings.map((el, i) =>
             <li key={i}>
               {el.name}
-              {el.tile.type == 'generator' &&
+              {el.texture.type == 'generator' &&
                 <button onClick={() => toggleBuildingState(i)}>
                   {el.data.active ? 'on' : 'off'}
                 </button>
