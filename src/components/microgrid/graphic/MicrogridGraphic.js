@@ -30,6 +30,7 @@ class MicrogridGraphic extends React.Component {
       },
       tl: new TimelineMax()
     };
+    this.setGraphicSize = this.setGraphicSize.bind(this);
   }
   componentDidMount () {
     this.setGraphicSize();
@@ -51,10 +52,11 @@ class MicrogridGraphic extends React.Component {
       .clear()
       .from('.terrain-tile', 0.5, {opacity: 0.8, transform: 'scale(0.0)', y: '+=2', ease: 'Cubic.easeOut'}, 0.1)
       .from('.grid', 0.3, {opacity: 0})
-      .staggerFrom('.building-tile', 0.3, {opacity: 0}, 0.2)
+      .staggerFrom('.building-tile', 0.5, {y: "-=10", opacity: 0, ease: 'Cubic.easeOut'}, 0.2)
+    //.from('.building-tile', 0.5, {top: '-=5', transform: 'scale(0.8)', opacity: 0}, '-=0.2')
       .from(['.marker-tile'], 0.5, {transform: 'scale(0)', opacity: 0}, '-=0.1')
-      .from('.powerline', 0.5, {opacity: 0}, "-=0.3")
-      .from('.powerflow', 0.5, {opacity: 0}, "+=0.3");
+      .from('.powerline', 0.5, {opacity: 0}, "-=0.8")
+      .from('.powerflow', 0.5, {opacity: 0}, "-=0.2");
   }
 
   /* eslint-disable no-console */
