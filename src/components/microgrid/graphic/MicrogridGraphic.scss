@@ -92,7 +92,15 @@
   stroke-width: 3;
 }
 
-.powerflow {
+.active .powerline.generation {
+  stroke: rgba(204,255,153,0.5);
+}
+
+.active .powerline.distribution {
+  stroke: rgba(255,153,153,0.5);
+}
+
+.active .powerflow {
   stroke: white;
   stroke-width: 2;
   stroke-linecap: round;
