@@ -1,7 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './MicrogridGraphic.scss';
-import { isometricTileCoords, isometricTilePolygonPoints } from '../../../helpers/isometric-grid.js';
+import { isometricTileCoords,
+  tilePolygons,
+  mapToIso,
+  arrayToIso
+} from '../../../helpers/isometric-grid.js';
 import TerrainTiles from './TerrainTiles.js';
 import BuildingTiles from './BuildingTiles.js';
 import IsometricGrid from './IsometricGrid.js';
@@ -66,51 +70,9 @@ class MicrogridGraphic extends React.Component {
     });
   }
 
-  mapToIso (isotable, tile, objectsMap) {
-    return objectsMap
-      .map((row, y) => row
-        .map((texture, x) => {
-          let coords = isotable[y][x];
-          let style = {
-            left: coords.x,
-            top: coords.y,
-            width: tile.width,
-            height: tile.height * texture.height
-          };
-          return {texture, pos: [x, y], style};
-        })
-      )
-      .reduce((a, b) => a.concat(b), []);
-  }
-
-  arrayToIso (isotable, tile, array) {
-    return array.map(el => {
-      let coords = isotable[el.pos[0]][el.pos[1]];
-      let style = {
-        left: coords.x,
-        top: coords.y - (tile.height * el.texture.offsetHeight),
-        width: tile.width,
-        height: tile.height * el.texture.height
-      };
-      el.style = style;
-      return el;
-    });
-  }
-
   tileCoords (gridSize, tile) {
     let {width, height} = tile;
     return isometricTileCoords(gridSize, [width, height]);
-  }
-
-  tilePolygons (isotable, tile) {
-    let {width, height} = tile;
-    return isotable.map((row, y) => row
-      .map((coords, x) => {
-        return {
-          points: isometricTilePolygonPoints([width, height], coords),
-          pos: [y, x]};
-      }))
-      .reduce((a,b) => a.concat(b), []);
   }
 
   render () {
@@ -122,9 +84,9 @@ class MicrogridGraphic extends React.Component {
     };
 
     let isotable = this.tileCoords(gridSize, tile);
-    let terrainLayer = this.mapToIso(isotable, tile, terrainMap).filter(el => el.texture);
-    let buildingsLayer = this.arrayToIso(isotable, tile, buildings);
-    let grid = this.tilePolygons(isotable, tile);
+    let terrainLayer = mapToIso(isotable, tile, terrainMap).filter(el => el.texture);
+    let buildingsLayer = arrayToIso(isotable, tile, buildings);
+    let grid = tilePolygons(isotable, tile);
 
     return (
       <div className="system-graphic" ref={graphic => this.graphic = graphic}>
