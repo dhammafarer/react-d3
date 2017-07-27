@@ -32,8 +32,8 @@ class MicrogridGraphic extends React.Component {
     };
   }
   componentDidMount () {
-    window.addEventListener('resize', () => this.setGraphicSize());
     this.setGraphicSize();
+    window.addEventListener('resize', () => this.setGraphicSize());
     this.animateEnter();
   }
 
@@ -61,9 +61,11 @@ class MicrogridGraphic extends React.Component {
   setGraphicSize () {
     let componentWidth = this.graphic.offsetWidth;
     let componentHeight = this.graphic.offsetHeight;
-    let [y, x] = this.props.gridSize;
-    let tileHeight = componentHeight / (y + 1); // column length + 1x tile height for margin
-    let tileWidth = componentWidth / (x + 1); // row length + 1x tile width for margin
+    let gridSize = this.props.gridSize;
+    let y = gridSize[0] + 1; // column length + 1x tile height for margin
+    let x = gridSize[1] + 1; // row length + 1x tile width for margin
+    let tileHeight = componentHeight / y;
+    let tileWidth = componentWidth / x;
     let altHeight = tileWidth / tileRatio;
 
     if (tileHeight < altHeight) {
@@ -72,14 +74,15 @@ class MicrogridGraphic extends React.Component {
       tileHeight = altHeight;
     }
 
-    let margin = [tileHeight / 2, tileWidth / 2];
-    let width = componentWidth - margin[1] * 2;
-    let height = tileHeight * (this.props.gridSize[1]);
+    let width = tileWidth * gridSize[1];
+    let height = tileHeight * gridSize[0];
+    let margin = [(componentHeight - height) / 2, (componentWidth - width) / 2];
 
     this.setState({
       size: {width, height, margin},
       tile: {width: tileWidth, height: tileHeight}
     });
+    console.log(componentHeight, width, height, margin);
   }
 
   tileCoords (gridSize, tile) {
@@ -101,16 +104,13 @@ class MicrogridGraphic extends React.Component {
     let grid = tilePolygons(isotable, tile);
 
     return (
-      <div className="system-graphic" ref={graphic => this.graphic = graphic}>
-        <h2>{this.props.name}</h2>
+      <div className="microgrid-graphic" ref={graphic => this.graphic = graphic}>
         <div className="graphic-content" style={graphicStyles}>
-
           <TerrainTiles terrain={terrainLayer}/>
           <IsometricGrid grid={grid} width={width} height={height}/>
           <BuildingTiles buildings={buildingsLayer}/>
           <NetworkLines data={buildings} tile={this.state.tile} width={width} height={height}/>
           <BuildingMarkers data={buildings} handleClick={this.props.openGraphicModal}/>
-
         </div>
       </div>
     );

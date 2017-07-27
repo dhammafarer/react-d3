@@ -9,7 +9,7 @@ BuildingMarkers.propTypes = {
 function BuildingMarkers ({data, handleClick}) {
   return (
     <div className="markers">
-      {data.map((el, i) =>
+      {data.map((el) =>
         <div key={el.pos} className="tile" style={el.style}>
           <div className="marker-tile">
             <div className="dot-background"/>

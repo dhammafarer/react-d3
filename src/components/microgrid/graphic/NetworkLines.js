@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { line, curveCardinal } from 'd3';
 
 NetworkLines.propTypes = {
   data: PropTypes.array.isRequired,
@@ -22,7 +21,7 @@ function NetworkLines ({data, width, height, tile}) {
 
   if (consumers.length && distributor) {
     distLines = consumers
-      .map(({style, texture, data}) => {
+      .map(({style}) => {
         return [
           {x: distributor.style.left + offsetWidth, y: distributor.style.top + offsetHeight},
           {x: style.left + offsetWidth, y: style.top + offsetHeight}
@@ -32,7 +31,7 @@ function NetworkLines ({data, width, height, tile}) {
 
   if (consumers.length && distributor && generators.length) {
     genLines = generators
-      .map(({style, texture, data}) => {
+      .map(({style, data}) => {
         return [
           {x: style.left + offsetWidth, y: style.top + offsetHeight},
           {x: distributor.style.left + offsetWidth, y: distributor.style.top + offsetHeight},

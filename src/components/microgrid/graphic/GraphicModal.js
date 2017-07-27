@@ -32,7 +32,6 @@ class GraphicModal extends React.Component {
   }
 
   onExit (node) {
-    let content = node.querySelector('.graphic-modal-content');
     let ripple = node.querySelector('.ripple');
     const background = node.querySelector('.graphic-modal-background');
     this.tl
@@ -47,7 +46,7 @@ class GraphicModal extends React.Component {
   }
 
   render () {
-    const {closeModal, showModal, position, data} = this.props;
+    const {closeModal, showModal, data} = this.props;
     return (
       <Transition in={showModal}
         onEnter={this.onEnter}
