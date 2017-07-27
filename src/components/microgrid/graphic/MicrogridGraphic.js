@@ -82,7 +82,6 @@ class MicrogridGraphic extends React.Component {
       size: {width, height, margin},
       tile: {width: tileWidth, height: tileHeight}
     });
-    console.log(componentHeight, width, height, margin);
   }
 
   tileCoords (gridSize, tile) {

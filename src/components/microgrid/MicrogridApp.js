@@ -1,5 +1,5 @@
 import React from 'react';
-import MicrogridGraphic from './graphic/MicrogridGraphic.js';
+import GraphicContainer from './graphic/GraphicContainer.js';
 import GraphicModal from './graphic/GraphicModal.js';
 import ControlPanel from './ui/ControlPanel.js';
 import SystemSettings from './ui/SystemSettings.js';
@@ -20,10 +20,6 @@ class MicrogridApp extends React.Component {
     this.openGraphicModal = this.openGraphicModal.bind(this);
     this.closeGraphicModal = this.closeGraphicModal.bind(this);
     this.toggleBuildingState = this.toggleBuildingState.bind(this);
-  }
-
-  activeSystem () {
-    return this.state.systems[this.state.activeIdx];
   }
 
   setActiveSystem (i) {
@@ -62,8 +58,6 @@ class MicrogridApp extends React.Component {
   }
 
   render () {
-    let activeSystem = this.activeSystem();
-
     return (
       <div className="microgrid-app">
 
@@ -100,7 +94,7 @@ class MicrogridApp extends React.Component {
               <div className="pane-horizontal">
                 <div className="horizontal-panel">
                   <div className="horizontal-panel-content">
-                    <MicrogridGraphic {...activeSystem} openGraphicModal={this.openGraphicModal}/>
+                    <GraphicContainer systems={this.state.systems} activeIdx={this.state.activeIdx} openGraphicModal={this.openGraphicModal}/>
                   </div>
                 </div>
               </div>
